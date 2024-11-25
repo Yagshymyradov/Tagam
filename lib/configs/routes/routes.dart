@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../view/home/home.dart';
+import '../../view/view.dart';
 
 abstract final class NavigationRouteNames {
   static const home = '/home';
@@ -8,6 +8,6 @@ abstract final class NavigationRouteNames {
 
 abstract final class Navigation {
   static final routes = <String, Widget Function(BuildContext)>{
-    NavigationRouteNames.home: (_) => const Home(),
+    NavigationRouteNames.home: (_) => const HomeView(),
   };
 }
