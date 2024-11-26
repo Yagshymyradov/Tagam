@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../data/api_response.dart';
 import '../../main.dart';
 import '../../view_model/view_model.dart';
 import 'widgets/widgets.dart';
@@ -12,19 +13,21 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ChangeNotifierProvider(
-        create: (context) => HomeViewModel(homeRepository: getIt())..allRestaurants(),
+        create: (context) => HomeViewModel(
+          homeRepository: getIt(),
+        )..getAllRestaurants(),
         child: Consumer<HomeViewModel>(
           builder: (context, value, child) {
-            if (value.restaurants.isNotEmpty) {
-              return HomeBody(value: value);
+            switch (value.responseState.status) {
+              case Status.loading:
+                return const Center(child: CircularProgressIndicator());
+              case Status.loaded:
+                return HomeBody(value: value);
+              case Status.error:
+                return Text(value.toString());
+              default:
+                return const SizedBox();
             }
-            if (value.error != null) {
-              return Text(value.error.toString());
-            }
-            if (value.isLoading) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            return const SizedBox();
           },
         ),
       ),

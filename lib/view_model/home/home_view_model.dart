@@ -1,5 +1,7 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
+import '../../configs/routes/routes.dart';
+import '../../data/api_response.dart';
 import '../../model/model.dart';
 import '../../repository/repository.dart';
 
@@ -8,28 +10,19 @@ class HomeViewModel with ChangeNotifier {
 
   HomeViewModel({required this.homeRepository});
 
-  bool _isLoading = false;
+  ApiResponse<List<AllRestaurantsModel>> _responseState = ApiResponse.loading();
 
-  bool get isLoading => _isLoading;
+  ApiResponse<List<AllRestaurantsModel>> get responseState => _responseState;
 
-  List<AllRestaurantsModel> _restaurants = [];
-
-  List<AllRestaurantsModel> get restaurants => _restaurants;
-
-  Object? _error;
-
-  Object? get error => _error;
-
-  Future<void> allRestaurants() async {
-    _isLoading = true;
+  Future<void> getAllRestaurants() async {
+    _responseState = ApiResponse.loading();
     notifyListeners();
     try {
-      final response = await homeRepository.allRestaurants();
-      _restaurants = response;
+      final response = await homeRepository.getAllRestaurants();
+      _responseState = ApiResponse.loaded(response);
     } catch (e) {
-      _error = e;
+      _responseState = ApiResponse.error(e.toString());
     }
-    _isLoading = false;
     notifyListeners();
   }
 }
