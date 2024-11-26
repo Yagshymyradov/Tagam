@@ -14,6 +14,9 @@ void main() {
   getIt.registerLazySingleton<HomeRepository>(
     () => HomeApiRepository(httpClient: JsonHttpClient()),
   );
+  getIt.registerLazySingleton<RestaurantDetailsRepository>(
+    () => RestaurantDetailsApiRepository(httpClient: JsonHttpClient()),
+  );
 
   runApp(const TagamApp());
 }
@@ -33,6 +36,7 @@ class TagamApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: NavigationRouteNames.home,
         routes: Navigation.routes,
+        onGenerateRoute: Navigation.onGenerateRoute,
       ),
     );
   }

@@ -25,4 +25,12 @@ class HomeViewModel with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void onRestaurantTap(BuildContext context, int restaurantId) {
+    Navigator.pushNamed(
+      context,
+      NavigationRouteNames.restaurantDetails,
+      arguments: restaurantId,
+    );
+  }
 }
