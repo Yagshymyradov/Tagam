@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'configs/routes/routes.dart';
+import 'configs/theme/theme.dart';
 import 'data/json_http_client.dart';
 import 'repository/repository.dart';
+import 'service/preferences.dart';
 import 'view_model/view_model.dart';
 
 GetIt getIt = GetIt.instance;
@@ -16,6 +19,13 @@ void main() {
   );
   getIt.registerLazySingleton<RestaurantDetailsRepository>(
     () => RestaurantDetailsApiRepository(httpClient: JsonHttpClient()),
+  );
+
+  getIt.registerSingletonAsync<AppPrefsService>(
+    () async => AppPrefsService(await SharedPreferences.getInstance()),
+  );
+  getIt.registerLazySingleton<OnboardingViewModel>(
+    () => OnboardingViewModel(prefsService: getIt()),
   );
 
   runApp(const TagamApp());
@@ -31,11 +41,15 @@ class TagamApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => HomeViewModel(homeRepository: getIt()),
         ),
+        ChangeNotifierProvider(
+          create: (_) => OnboardingViewModel(prefsService: getIt()),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: NavigationRouteNames.home,
+        theme: AppTheme.darkTheme,
         routes: Navigation.routes,
+        initialRoute: NavigationRouteNames.splash,
         onGenerateRoute: Navigation.onGenerateRoute,
       ),
     );
