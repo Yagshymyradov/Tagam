@@ -9,10 +9,14 @@ final class AppTheme {
 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
+
     useMaterial3: true,
     scaffoldBackgroundColor: AppColors.black,
     textTheme: AppTextTheme.darkTextTheme,
     extensions: const [textStyleDark],
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.transparent,
+    ),
     elevatedButtonTheme: const ElevatedButtonThemeData(
       style: ButtonStyle(
         minimumSize: WidgetStatePropertyAll(Size(double.infinity, 48)),

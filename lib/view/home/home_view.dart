@@ -12,6 +12,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: homedAppBar(),
       body: ChangeNotifierProvider(
         create: (context) => HomeViewModel(
           homeRepository: getIt(),

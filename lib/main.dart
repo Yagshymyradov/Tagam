@@ -48,6 +48,7 @@ class TagamApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.darkTheme,
+        themeMode: ThemeMode.dark,
         routes: Navigation.routes,
         initialRoute: NavigationRouteNames.splash,
         onGenerateRoute: Navigation.onGenerateRoute,

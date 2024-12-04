@@ -20,5 +20,10 @@ final class AppTextTheme {
       color: AppColors.midnightGrape,
       fontWeight: FontWeight.w400,
     ),
+    bodySmall: TextStyle(
+      fontSize: 10,
+      color: AppColors.white,
+      fontWeight: FontWeight.w600,
+    ),
   );
 }
