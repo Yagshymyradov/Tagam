@@ -15,6 +15,16 @@ final class AppTextTheme {
       fontSize: 16,
       color: AppColors.mediumGray,
     ),
+    labelMedium: TextStyle(
+      fontSize: 14,
+      color: AppColors.white,
+      fontWeight: FontWeight.w400,
+    ),
+    labelSmall: TextStyle(
+      fontSize: 12,
+      color: AppColors.white,
+      fontWeight: FontWeight.w600,
+    ),
     bodyMedium: TextStyle(
       fontSize: 16,
       color: AppColors.midnightGrape,
@@ -24,6 +34,11 @@ final class AppTextTheme {
       fontSize: 10,
       color: AppColors.white,
       fontWeight: FontWeight.w600,
+    ),
+    headlineSmall: TextStyle(
+      fontSize: 20,
+      color: AppColors.white,
+      fontWeight: FontWeight.w700,
     ),
   );
 }
