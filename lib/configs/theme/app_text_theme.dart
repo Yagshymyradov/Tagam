@@ -11,6 +11,7 @@ final class AppTextTheme {
       color: AppColors.white,
       fontWeight: FontWeight.w700,
     ),
+    titleSmall: TextStyle(color: AppColors.white, fontSize: 14, fontWeight: FontWeight.w600),
     labelLarge: TextStyle(
       fontSize: 16,
       color: AppColors.mediumGray,

@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 
+import '../extensions.dart';
 import '../theme/colors.dart';
 
-class CategoriesCard extends StatelessWidget {
-  const CategoriesCard({super.key});
+class NewFoodsCard extends StatelessWidget {
+  const NewFoodsCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final textThemeX = context.textThemeEx;
     return SizedBox(
-      height: 120,
+      height: 256,
       child: ListView.separated(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (context, index) => SizedBox(
-          width: 100,
+          width: 184,
           child: Stack(
             fit: StackFit.expand,
             children: [
@@ -39,19 +41,37 @@ class CategoriesCard extends StatelessWidget {
                 ),
               ),
               Positioned(
+                top: 6,
+                right: 10,
+                child: Text(
+                  'Täze',
+                  style: textThemeX.headlineSmallX,
+                ),
+              ),
+              Positioned(
                 left: 10,
                 right: 10,
-                bottom: 14,
-                child: Text(
-                  'Breakfast',
-                  style: textTheme.labelMedium,
-                  textAlign: TextAlign.center,
+                bottom: 16,
+                child: Column(
+                  children: [
+                    Row(
+                      children: List.generate(
+                        5,
+                        (e) => const Icon(Icons.star, size: 12),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      'Molten Dulce de Leche Cake',
+                      style: textTheme.titleSmall,
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
         ),
-        separatorBuilder: (context, index) => const SizedBox(width: 8),
+        separatorBuilder: (context, index) => const SizedBox(width: 12),
       ),
     );
   }
