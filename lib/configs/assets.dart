@@ -12,6 +12,11 @@ final class Assets {
   static const String star = '$_icons/star.svg';
   static const String clock = '$_icons/clock.svg';
   static const String spoonAndFork = '$_icons/spoon-and-fork.svg';
+  static const String home = '$_icons/home.svg';
+  static const String categories = '$_icons/categories.svg';
+  static const String cashbackPrize = '$_icons/cashback-prize.svg';
+  static const String shoppingCart = '$_icons/shopping-cart.svg';
+  static const String profile = '$_icons/profile.svg';
 
   static const String foodGroup = '$_images/food-group.png';
   static const String desertGroup = '$_images/desert-group.png';
