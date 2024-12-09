@@ -28,7 +28,7 @@ class HomeBody extends StatelessWidget {
         SliverToBoxAdapter(child: SizedBox(height: 10)),
         SliverToBoxAdapter(child: SectionTitle(title: 'Restaurants')),
         SliverToBoxAdapter(child: RestaurantsCard()),
-        SliverToBoxAdapter(child: SizedBox(height: 20)),
+        SliverToBoxAdapter(child: SizedBox(height: 110)),
       ],
     );
   }

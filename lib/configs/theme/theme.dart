@@ -9,13 +9,26 @@ final class AppTheme {
 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-
     useMaterial3: true,
     scaffoldBackgroundColor: AppColors.black,
     textTheme: AppTextTheme.darkTextTheme,
     extensions: const [textStyleDark],
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: AppColors.black.withOpacity(0.2),
+      selectedLabelStyle: const TextStyle(
+        fontSize: 12,
+        color: AppColors.white,
+        fontWeight: FontWeight.w600,
+      ),
+      unselectedLabelStyle: TextStyle(
+        fontSize: 12,
+        color: AppColors.white.withOpacity(0.5),
+        fontWeight: FontWeight.w600,
+      ),
     ),
     elevatedButtonTheme: const ElevatedButtonThemeData(
       style: ButtonStyle(
