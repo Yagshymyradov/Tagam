@@ -9,10 +9,16 @@ AppBar homedAppBar() {
     actions: [
       IconButton(
         onPressed: () {},
+        style: IconButton.styleFrom(
+          backgroundColor: Colors.transparent,
+        ),
         icon: SvgPicture.asset(Assets.notification),
       ),
       IconButton(
         onPressed: () {},
+        style: IconButton.styleFrom(
+          backgroundColor: Colors.transparent,
+        ),
         icon: SvgPicture.asset(Assets.search),
       ),
     ],

@@ -13,22 +13,22 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
+    return CustomScrollView(
       slivers: [
-        SliverToBoxAdapter(child: BannerCard()),
-        SliverToBoxAdapter(child: SectionTitle(title: 'All categories')),
-        SliverToBoxAdapter(child: CategoriesCard()),
-        SliverToBoxAdapter(child: SizedBox(height: 10)),
-        SliverToBoxAdapter(child: SectionTitle(title: 'Top restaurants')),
-        SliverToBoxAdapter(child: RestaurantsCard(isTop: true)),
-        SliverToBoxAdapter(child: SizedBox(height: 10)),
-        SliverToBoxAdapter(child: SectionTitle(title: 'New foods')),
-        SliverToBoxAdapter(child: SizedBox(height: 10)),
-        SliverToBoxAdapter(child: NewFoodsCard()),
-        SliverToBoxAdapter(child: SizedBox(height: 10)),
-        SliverToBoxAdapter(child: SectionTitle(title: 'Restaurants')),
-        SliverToBoxAdapter(child: RestaurantsCard()),
-        SliverToBoxAdapter(child: SizedBox(height: 110)),
+        const SliverToBoxAdapter(child: BannerCard()),
+        const SliverToBoxAdapter(child: SectionTitle(title: 'All categories')),
+        const SliverToBoxAdapter(child: CategoriesCard()),
+        const SliverToBoxAdapter(child: SizedBox(height: 10)),
+        const SliverToBoxAdapter(child: SectionTitle(title: 'Top restaurants')),
+        TopRestaurants(model: value.responseState.data),
+        const SliverToBoxAdapter(child: SizedBox(height: 10)),
+        const SliverToBoxAdapter(child: SectionTitle(title: 'New foods')),
+        const SliverToBoxAdapter(child: SizedBox(height: 10)),
+        const SliverToBoxAdapter(child: NewFoodsCard()),
+        const SliverToBoxAdapter(child: SizedBox(height: 10)),
+        const SliverToBoxAdapter(child: SectionTitle(title: 'Restaurants')),
+        Restaurants(model: value.responseState.data),
+        const SliverToBoxAdapter(child: SizedBox(height: 110)),
       ],
     );
   }
