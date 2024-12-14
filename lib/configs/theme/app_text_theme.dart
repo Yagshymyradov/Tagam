@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'colors.dart';
+import 'app_colors.dart';
 
 final class AppTextTheme {
   const AppTextTheme._();
@@ -11,9 +11,19 @@ final class AppTextTheme {
       color: AppColors.white,
       fontWeight: FontWeight.w700,
     ),
-    titleSmall: TextStyle(color: AppColors.white, fontSize: 14, fontWeight: FontWeight.w600),
+    titleMedium: TextStyle(
+      fontSize: 16,
+      color: AppColors.white,
+      fontWeight: FontWeight.w500,
+    ),
+    titleSmall: TextStyle(
+      color: AppColors.white,
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
+    ),
     labelLarge: TextStyle(
       fontSize: 16,
+      fontWeight: FontWeight.w400,
       color: AppColors.mediumGray,
     ),
     labelMedium: TextStyle(
@@ -40,6 +50,11 @@ final class AppTextTheme {
       fontSize: 20,
       color: AppColors.white,
       fontWeight: FontWeight.w700,
+    ),
+    displayMedium: TextStyle(
+      fontSize: 36,
+      color: AppColors.white,
+      fontWeight: FontWeight.w400,
     ),
   );
 }

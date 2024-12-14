@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../configs/assets.dart';
 import '../../../configs/extensions.dart';
-import '../../../configs/theme/colors.dart';
+import '../../../configs/theme/app_colors.dart';
 import '../../../view_model/view_model.dart';
 
 class OnboardingFooter extends StatelessWidget {

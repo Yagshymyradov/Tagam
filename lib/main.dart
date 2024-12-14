@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'configs/routes/routes.dart';
-import 'configs/theme/theme.dart';
+import 'configs/theme/app_theme.dart';
 import 'data/json_http_client.dart';
 import 'repository/repository.dart';
 import 'service/preferences.dart';

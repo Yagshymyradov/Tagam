@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../theme/colors.dart';
+import '../theme/app_colors.dart';
 
 class SmallBlurCard extends StatelessWidget {
   final String icon;

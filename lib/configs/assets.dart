@@ -17,6 +17,7 @@ final class Assets {
   static const String cashbackPrize = '$_icons/cashback-prize.svg';
   static const String shoppingCart = '$_icons/shopping-cart.svg';
   static const String profile = '$_icons/profile.svg';
+  static const String heart = '$_icons/heart.svg';
 
   static const String foodGroup = '$_images/food-group.png';
   static const String desertGroup = '$_images/desert-group.png';

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../configs/assets.dart';
-import '../../configs/theme/colors.dart';
+import '../../configs/theme/app_colors.dart';
 import '../view.dart';
 
 class MainView extends StatefulWidget {

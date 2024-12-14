@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../extensions.dart';
-import '../theme/colors.dart';
+import '../theme/app_colors.dart';
 
 class NewFoodsCard extends StatelessWidget {
   const NewFoodsCard({super.key});

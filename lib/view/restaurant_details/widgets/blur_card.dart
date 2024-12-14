@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../configs/theme/colors.dart';
+import '../../../configs/theme/app_colors.dart';
 
 class BlurCard extends StatelessWidget {
   final String icon;

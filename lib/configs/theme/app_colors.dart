@@ -8,6 +8,7 @@ final class AppColors {
   static const softGray = Color(0xFFDAD8DB);
   static const midnightGrape = Color(0xFF0F0B0F);
   static const goldenOlive = Color(0xFF9C854F);
+  static const lightPink = Color(0xFFFF3F94);
   static const darkGray = Color(0XFF191919);
   static const black = Color(0xFF000000);
 }

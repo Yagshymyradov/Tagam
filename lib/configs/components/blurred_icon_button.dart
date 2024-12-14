@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../theme/colors.dart';
+import '../theme/app_colors.dart';
 
 class BlurredIconButton extends StatelessWidget {
   final VoidCallback onTap;

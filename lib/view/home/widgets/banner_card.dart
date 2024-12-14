@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../configs/theme/colors.dart';
+import '../../../configs/theme/app_colors.dart';
 
 class BannerCard extends StatelessWidget {
   const BannerCard({super.key});
