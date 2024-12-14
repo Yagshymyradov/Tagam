@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
 
 import '../extensions.dart';
-import '../theme/colors.dart';
+import '../theme/app_colors.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   const ProductCard({super.key});
+
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  bool selected = false;
+
+  void onSelectedProduct() {
+    selected = !selected;
+    setState(() {
+      //no-op
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
@@ -44,12 +59,23 @@ class ProductCard extends StatelessWidget {
                   '120 tmt',
                   style: context.textThemeEx.priceMedium,
                 ),
-                IconButton(
-                  onPressed: () {},
-                  style: IconButton.styleFrom(
-                    backgroundColor: AppColors.white.withOpacity(0.12),
-                  ),
-                  icon: const Icon(Icons.add),
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 320),
+                  reverseDuration: const Duration(milliseconds: 320),
+                  child: selected
+                      ? IconButton(
+                          key: const ValueKey(1),
+                          onPressed: onSelectedProduct,
+                          style: IconButton.styleFrom(
+                            backgroundColor: colorScheme.scrim,
+                          ),
+                          icon: const Icon(Icons.check),
+                        )
+                      : IconButton(
+                          key: const ValueKey(0),
+                          onPressed: onSelectedProduct,
+                          icon: const Icon(Icons.add),
+                        ),
                 ),
               ],
             ),
