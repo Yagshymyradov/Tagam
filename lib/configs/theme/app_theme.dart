@@ -16,6 +16,31 @@ final class AppTheme {
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: AppColors.white,
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: AppColors.white.withValues(alpha: 0.06)),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: AppColors.white.withValues(alpha: 0.06)),
+      ),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 14,
+        vertical: 10,
+      ),
+      filled: true,
+      hintStyle: TextStyle(
+        fontSize: 14,
+        color: AppColors.white.withValues(alpha: 0.6),
+        fontWeight: FontWeight.w400,
+      ),
+      fillColor: AppColors.white.withValues(alpha: 0.1),
+      prefixIconConstraints: const BoxConstraints(
+        maxHeight: 24,
+        minWidth: 48,
+      ),
+    ),
     textTheme: AppTextTheme.darkTextTheme,
     extensions: const [textStyleDark],
     appBarTheme: const AppBarTheme(

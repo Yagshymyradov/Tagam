@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../configs/assets.dart';
+import '../../../configs/routes/routes.dart';
 
-AppBar homedAppBar() {
+AppBar homedAppBar(BuildContext context) {
   return AppBar(
     title: SvgPicture.asset(Assets.ballyKoke, height: 29),
     actions: [
@@ -15,7 +16,10 @@ AppBar homedAppBar() {
         icon: SvgPicture.asset(Assets.notification),
       ),
       IconButton(
-        onPressed: () {},
+        onPressed: () => Navigator.pushNamed(
+          context,
+          NavigationRouteNames.search,
+        ),
         style: IconButton.styleFrom(
           backgroundColor: Colors.transparent,
         ),

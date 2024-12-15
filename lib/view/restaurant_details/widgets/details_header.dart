@@ -26,8 +26,8 @@ class DetailsHeader extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                AppColors.white.withOpacity(1),
-                AppColors.white.withOpacity(0),
+                AppColors.white.withValues(alpha: 1),
+                AppColors.white.withValues(alpha: 0),
               ],
             ).createShader(bounds);
           },
@@ -49,7 +49,7 @@ class DetailsHeader extends StatelessWidget {
             children: [
               BlurredIconButton(
                 onTap: () => Navigator.pop(context),
-                icon: const Icon(Icons.arrow_back_outlined),
+                icon: SvgPicture.asset(Assets.arrowLeft),
               ),
               BlurredIconButton(
                 onTap: () {},
