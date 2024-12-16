@@ -9,6 +9,7 @@ abstract final class NavigationRouteNames {
   static const home = '/home';
   static const search = '/search';
   static const restaurantDetails = '/restaurants_details';
+  static const productDetails = '/product_details';
 }
 
 abstract final class Navigation {
@@ -18,6 +19,7 @@ abstract final class Navigation {
     NavigationRouteNames.mainScreen: (_) => const MainView(),
     NavigationRouteNames.home: (_) => const HomeView(),
     NavigationRouteNames.search: (_) => const SearchView(),
+    NavigationRouteNames.productDetails: (_) => const ProductDetailsView(),
   };
 
   static Route<Object> onGenerateRoute(RouteSettings settings) {

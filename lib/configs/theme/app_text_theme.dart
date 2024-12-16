@@ -56,5 +56,10 @@ final class AppTextTheme {
       color: AppColors.white,
       fontWeight: FontWeight.w400,
     ),
+    displaySmall: TextStyle(
+      fontSize: 30,
+      color: AppColors.white,
+      fontWeight: FontWeight.w400,
+    ),
   );
 }
