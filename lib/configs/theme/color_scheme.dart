@@ -14,5 +14,7 @@ abstract final class AppColorScheme {
     onError: AppColors.white,
     surface: AppColors.black,
     scrim: AppColors.lightPink,
+    primaryContainer: AppColors.darkGray,
+    secondaryContainer: AppColors.white.withValues(alpha: 0.08),
   );
 }

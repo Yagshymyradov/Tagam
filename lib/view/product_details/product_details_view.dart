@@ -11,7 +11,16 @@ class ProductDetailsView extends StatelessWidget {
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           const ProductDetailsAppBar(),
         ],
-        body: const CustomScrollView(),
+        body: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8),
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(child: ProductCostAndCount()),
+              SliverToBoxAdapter(child: SizedBox(height: 8)),
+              SliverToBoxAdapter(child: AboutProduct()),
+            ],
+          ),
+        ),
       ),
     );
   }

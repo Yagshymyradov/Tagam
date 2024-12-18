@@ -7,12 +7,14 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
   final TextStyle? headlineSmallX;
   final TextStyle? labelSmallX;
   final TextStyle? priceMedium;
+  final TextStyle? priceLarge;
 
   const TextStylesEx({
     required this.labelLargeX,
     required this.headlineSmallX,
     required this.labelSmallX,
     required this.priceMedium,
+    required this.priceLarge,
   });
 
   @override
@@ -21,12 +23,14 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     TextStyle? headlineSmallX,
     TextStyle? labelSmallX,
     TextStyle? priceMedium,
+    TextStyle? priceLarge,
   }) {
     return TextStylesEx(
       labelLargeX: labelLargeX ?? this.labelLargeX,
       headlineSmallX: headlineSmallX ?? this.headlineSmallX,
       labelSmallX: labelSmallX ?? this.labelSmallX,
       priceMedium: priceMedium ?? this.priceMedium,
+      priceLarge: priceLarge ?? this.priceLarge,
     );
   }
 
@@ -40,6 +44,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       headlineSmallX: headlineSmallX,
       labelSmallX: labelLargeX,
       priceMedium: priceMedium,
+      priceLarge: priceLarge,
     );
   }
 }
@@ -62,6 +67,12 @@ const textStyleDark = TextStylesEx(
   ),
   priceMedium: TextStyle(
     fontSize: 16,
+    fontStyle: FontStyle.italic,
+    color: AppColors.white,
+    fontWeight: FontWeight.w700,
+  ),
+  priceLarge: TextStyle(
+    fontSize: 22,
     fontStyle: FontStyle.italic,
     color: AppColors.white,
     fontWeight: FontWeight.w700,

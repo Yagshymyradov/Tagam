@@ -25,9 +25,9 @@ class SmallBlurCard extends StatelessWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: AppColors.white.withOpacity(0.12),
+            color: AppColors.white.withValues(alpha: 0.12),
             border: Border.all(
-              color: AppColors.white.withOpacity(0.06),
+              color: AppColors.white.withValues(alpha: 0.06),
             ),
           ),
           child: Padding(
