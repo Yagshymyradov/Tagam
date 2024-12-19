@@ -23,6 +23,7 @@ final class Assets {
   static const String searchWhite = '$_icons/search-white.svg';
   static const String calorie = '$_icons/calorie.svg';
   static const String weight = '$_icons/weight.svg';
+  static const String chevronDown = '$_icons/chevron-down.svg';
 
   static const String foodGroup = '$_images/food-group.png';
   static const String desertGroup = '$_images/desert-group.png';

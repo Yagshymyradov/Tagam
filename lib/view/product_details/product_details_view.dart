@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'widgets/widgets.dart';
 
@@ -21,6 +22,30 @@ class ProductDetailsView extends StatelessWidget {
             ],
           ),
         ),
+      body: Stack(
+        children: [
+          NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) => [
+              const ProductDetailsAppBar(),
+            ],
+            body: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(child: ProductCostAndCount()),
+                  SliverToBoxAdapter(child: SizedBox(height: 8)),
+                  SliverToBoxAdapter(child: AboutProduct()),
+                  SliverToBoxAdapter(child: SizedBox(height: 8)),
+                  SliverToBoxAdapter(child: ProductDescription()),
+                  SliverToBoxAdapter(child: SizedBox(height: 20)),
+                  SliverToBoxAdapter(child: ProductSimilarDishesText()),
+                  SliverToBoxAdapter(child: SizedBox(height: 20)),
+                  ProductSimilarDishes(),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

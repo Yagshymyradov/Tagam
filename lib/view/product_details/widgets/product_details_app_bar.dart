@@ -48,59 +48,65 @@ class _ProductDetailsAppBarState extends State<ProductDetailsAppBar> {
         const SizedBox(width: 10),
       ],
       flexibleSpace: Stack(
+        fit: StackFit.expand,
         children: [
           CarouselSlider.builder(
             itemCount: 4,
-            itemBuilder: (context, index, realIndex) => Image.asset(
-              'assets/images/image.png',
-              width: double.infinity,
-              fit: BoxFit.cover,
+            itemBuilder: (context, index, realIndex) => Stack(
+              fit: StackFit.expand,
+              children: [
+                Image.asset(
+                  'assets/images/image.png',
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: SizedBox(
+                    height: 130,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            AppColors.black,
+                            AppColors.black.withAlpha(0),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: SizedBox(
+                    height: 258,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            AppColors.black.withAlpha(0),
+                            AppColors.black,
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             options: CarouselOptions(
-              height: 455,
+              height: double.infinity,
               autoPlay: true,
               viewportFraction: 1,
               onPageChanged: (index, reason) => onPageChanged(index),
-            ),
-          ),
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: SizedBox(
-              height: 130,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      AppColors.black,
-                      AppColors.black.withAlpha(0),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: SizedBox(
-              height: 258,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      AppColors.black.withAlpha(0),
-                      AppColors.black,
-                    ],
-                  ),
-                ),
-              ),
             ),
           ),
           Positioned(
@@ -121,14 +127,13 @@ class _ProductDetailsAppBarState extends State<ProductDetailsAppBar> {
                       color: AppColors.white.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(4),
-                      child: Stack(
-                        children: [
-                          ImageFiltered(
-                            imageFilter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-                          ),
-                          AnimatedSmoothIndicator(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+                          child: AnimatedSmoothIndicator(
                             activeIndex: currentIndex,
                             count: 4,
                             onDotClicked: onPageChanged,
@@ -140,7 +145,7 @@ class _ProductDetailsAppBarState extends State<ProductDetailsAppBar> {
                               dotColor: AppColors.white.withValues(alpha: 0.5),
                             ),
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ),

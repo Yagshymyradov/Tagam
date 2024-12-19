@@ -36,6 +36,11 @@ final class AppTextTheme {
       color: AppColors.white,
       fontWeight: FontWeight.w600,
     ),
+    bodyLarge: TextStyle(
+      fontSize: 18,
+      color: AppColors.white,
+      fontWeight: FontWeight.w600,
+    ),
     bodyMedium: TextStyle(
       fontSize: 16,
       color: AppColors.midnightGrape,
@@ -45,6 +50,11 @@ final class AppTextTheme {
       fontSize: 10,
       color: AppColors.white,
       fontWeight: FontWeight.w600,
+    ),
+    headlineMedium: TextStyle(
+      fontSize: 22,
+      color: AppColors.white,
+      fontWeight: FontWeight.w400,
     ),
     headlineSmall: TextStyle(
       fontSize: 20,
