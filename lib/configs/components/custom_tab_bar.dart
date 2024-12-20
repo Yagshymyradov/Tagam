@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
@@ -15,17 +17,28 @@ class CustomTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: AppColors.darkGray,
-          borderRadius: BorderRadius.circular(14),
-        ),
-        child: TabBar(
-          controller: controller,
-          indicatorPadding: const EdgeInsets.all(4),
-          labelPadding: const EdgeInsets.all(16),
-          tabs: tabsTitle.map(Text.new).toList(growable: false),
+      padding: const EdgeInsets.symmetric(horizontal: 18),
+      child: ClipRRect(
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaY: 4, sigmaX: 4),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: AppColors.white.withValues(alpha: 0.2),
+              borderRadius: BorderRadius.circular(62),
+              border: Border.all(
+                color: AppColors.white.withValues(alpha: 0.06),
+              ),
+            ),
+            child: TabBar(
+              controller: controller,
+              indicatorPadding: const EdgeInsets.all(4),
+              labelPadding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 11,
+              ),
+              tabs: tabsTitle.map(Text.new).toList(growable: false),
+            ),
+          ),
         ),
       ),
     );

@@ -62,11 +62,8 @@ final class AppTheme {
       overlayColor: const WidgetStatePropertyAll(Colors.transparent),
       dividerColor: Colors.transparent,
       indicator: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(31),
         color: AppColors.white,
-        border: Border.all(
-          color: AppColors.black.withValues(alpha: 0.08),
-        ),
       ),
     ),
     dividerTheme: DividerThemeData(

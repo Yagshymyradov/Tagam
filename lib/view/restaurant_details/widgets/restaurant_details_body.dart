@@ -1,38 +1,47 @@
 import 'package:flutter/material.dart';
 
-import '../../../configs/components/components.dart';
 import '../../../model/model.dart';
-import 'details_header.dart';
 import 'widgets.dart';
 
-class RestaurantDetailsBody extends StatelessWidget {
+class RestaurantDetailsBody extends StatefulWidget {
   final AllRestaurantsModel? data;
 
   const RestaurantDetailsBody({super.key, required this.data});
 
   @override
+  State<RestaurantDetailsBody> createState() => _RestaurantDetailsBodyState();
+}
+
+class _RestaurantDetailsBodyState extends State<RestaurantDetailsBody> {
+  final controller = ScrollController();
+
+  @override
+  void initState() {
+    controller.addListener(() => setState(() {}));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final position = controller.hasClients && controller.position.pixels >= 450;
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         body: NestedScrollView(
+          controller: controller,
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
-            SliverToBoxAdapter(child: DetailsHeader(data: data)),
-            const SliverToBoxAdapter(child: SizedBox(height: 20)),
-            const SliverToBoxAdapter(
-              child: CustomTabBar(
-                tabsTitle: [
-                  'Menu',
-                  'About restaurant',
-                ],
-              ),
-            ),
+            RestaurantAppBar(data: widget.data),
           ],
-          body: const TabBarView(
-            children: [
-              MenuTab(),
-              Text('data'),
-            ],
+          body: AnimatedPadding(
+            padding: EdgeInsets.only(top: position ? 45 : 0),
+            duration: const Duration(milliseconds: 320),
+            child: const TabBarView(
+              physics: NeverScrollableScrollPhysics(),
+              children: [
+                MenuTab(),
+                Text('data'),
+              ],
+            ),
           ),
         ),
       ),

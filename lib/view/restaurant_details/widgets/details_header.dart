@@ -19,6 +19,7 @@ class DetailsHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Stack(
+      fit: StackFit.expand,
       children: [
         ShaderMask(
           shaderCallback: (bounds) {
@@ -38,24 +39,6 @@ class DetailsHeader extends StatelessWidget {
               data?.logo ?? '',
               fit: BoxFit.cover,
             ),
-          ),
-        ),
-        Positioned(
-          top: 56,
-          left: 16,
-          right: 16,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              BlurredIconButton(
-                onTap: () => Navigator.pop(context),
-                icon: SvgPicture.asset(Assets.arrowLeft),
-              ),
-              BlurredIconButton(
-                onTap: () {},
-                icon: SvgPicture.asset(Assets.heart),
-              ),
-            ],
           ),
         ),
         Positioned(

@@ -32,7 +32,6 @@ class _MenuTabState extends State<MenuTab> with TickerProviderStateMixin {
     final textTheme = Theme.of(context).textTheme;
     return Column(
       children: [
-        const SizedBox(height: 20),
         TabBar.secondary(
           labelStyle: textTheme.titleMedium,
           unselectedLabelStyle: textTheme.titleMedium,
@@ -42,17 +41,16 @@ class _MenuTabState extends State<MenuTab> with TickerProviderStateMixin {
           isScrollable: true,
           tabAlignment: TabAlignment.start,
           labelPadding: const EdgeInsets.only(right: 8),
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          physics: const NeverScrollableScrollPhysics(),
+          padding: const EdgeInsets.all(16),
           tabs: List<Widget>.generate(
             5,
-                (i) => DecoratedBox(
+            (i) => DecoratedBox(
               decoration: BoxDecoration(
-                color: AppColors.white.withOpacity(0.1),
+                color: AppColors.white.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: AppColors.white.withOpacity(
-                    _tabController.index == i ? 1 : 0.02,
+                  color: AppColors.white.withValues(
+                    alpha: _tabController.index == i ? 1 : 0.02,
                   ),
                 ),
               ),
@@ -74,15 +72,16 @@ class _MenuTabState extends State<MenuTab> with TickerProviderStateMixin {
         ),
         Expanded(
           child: TabBarView(
+            physics: const NeverScrollableScrollPhysics(),
             controller: _tabController,
             children: List.generate(
               5,
-                  (e) => GridView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 32),
+              (e) => GridView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                 itemBuilder: (context, index) => const ProductCard(),
                 itemCount: 100,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 0.63,
+                  mainAxisExtent: 300,
                   crossAxisCount: 2,
                   crossAxisSpacing: 8,
                   mainAxisSpacing: 14,
