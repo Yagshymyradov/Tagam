@@ -42,7 +42,7 @@ final class AppTheme {
       ),
     ),
     textTheme: AppTextTheme.darkTextTheme,
-    extensions: const [textStyleDark],
+    extensions: [textStyleDark],
     appBarTheme: const AppBarTheme(
       surfaceTintColor: Colors.transparent,
       backgroundColor: Colors.transparent,

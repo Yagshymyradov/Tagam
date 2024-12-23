@@ -1,6 +1,7 @@
 export 'blurred_icon_button.dart';
 export 'categories_card.dart';
 export 'custom_tab_bar.dart';
+export 'description_card.dart';
 export 'new_foods_card.dart';
 export 'product_card.dart';
 export 'restaurants_card.dart';
