@@ -41,7 +41,7 @@ class _MenuTabState extends State<MenuTab> with TickerProviderStateMixin {
           isScrollable: true,
           tabAlignment: TabAlignment.start,
           labelPadding: const EdgeInsets.only(right: 8),
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.fromLTRB(16, 0 , 16, 16),
           tabs: List<Widget>.generate(
             5,
             (i) => DecoratedBox(

@@ -33,13 +33,13 @@ class _RestaurantDetailsBodyState extends State<RestaurantDetailsBody> {
             RestaurantAppBar(data: widget.data),
           ],
           body: AnimatedPadding(
-            padding: EdgeInsets.only(top: position ? 45 : 0),
+            padding: EdgeInsets.only(top: position ? 55 : 20),
             duration: const Duration(milliseconds: 320),
             child: const TabBarView(
               physics: NeverScrollableScrollPhysics(),
               children: [
                 MenuTab(),
-                Text('data'),
+                InfoTab(),
               ],
             ),
           ),
