@@ -31,6 +31,8 @@ final class Assets {
   static const String user = '$_icons/user.svg';
   static const String pen = '$_icons/pen.svg';
   static const String open = '$_icons/open.svg';
+  static const String mapLocation = '$_icons/map-location.svg';
+  static const String cubeBox = '$_icons/cube-box.svg';
 
   static const String foodGroup = '$_images/food-group.png';
   static const String desertGroup = '$_images/desert-group.png';
