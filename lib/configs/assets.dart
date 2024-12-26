@@ -28,6 +28,8 @@ final class Assets {
   static const String instagram = '$_icons/instagram.svg';
   static const String location = '$_icons/location.svg';
   static const String internet = '$_icons/internet.svg';
+  static const String user = '$_icons/user.svg';
+  static const String pen = '$_icons/pen.svg';
   static const String open = '$_icons/open.svg';
 
   static const String foodGroup = '$_images/food-group.png';

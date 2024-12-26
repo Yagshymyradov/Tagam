@@ -11,6 +11,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
   final TextStyle? orderText;
   final TextStyle? labelMediumWO;
   final TextStyle? bodyLargeEx;
+  final TextStyle? bodySmallEx;
 
   const TextStylesEx({
     required this.labelLargeX,
@@ -21,6 +22,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     required this.orderText,
     required this.labelMediumWO,
     required this.bodyLargeEx,
+    required this.bodySmallEx,
   });
 
   @override
@@ -33,6 +35,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     TextStyle? orderText,
     TextStyle? labelMediumWO,
     TextStyle? bodyLargeEx,
+    TextStyle? bodySmallEx,
   }) {
     return TextStylesEx(
       labelLargeX: labelLargeX ?? this.labelLargeX,
@@ -43,6 +46,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       orderText: orderText ?? this.orderText,
       labelMediumWO: labelMediumWO ?? this.labelMediumWO,
       bodyLargeEx: bodyLargeEx ?? this.bodyLargeEx,
+      bodySmallEx: bodySmallEx ?? this.bodySmallEx,
     );
   }
 
@@ -60,6 +64,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       orderText: orderText,
       labelMediumWO: labelMediumWO,
       bodyLargeEx: bodyLargeEx,
+      bodySmallEx: bodySmallEx,
     );
   }
 }
@@ -106,5 +111,10 @@ final textStyleDark = TextStylesEx(
     fontSize: 18,
     color: AppColors.white,
     fontWeight: FontWeight.w400,
+  ),
+  bodySmallEx: TextStyle(
+    fontSize: 14,
+    color: AppColors.white.withValues(alpha: 0.8),
+    fontWeight: FontWeight.w500,
   ),
 );
