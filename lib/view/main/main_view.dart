@@ -22,7 +22,7 @@ class _MainViewState extends State<MainView> {
     const Text('Categories'),
     const Text('Cashback Prize'),
     const Text('Sopping Cart'),
-    const Text('Profile'),
+    const ProfileView(),
   ];
 
   void onTapNavButton(int value) {
@@ -35,7 +35,7 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     final activeIconColor = ColorFilter.mode(
-      AppColors.white.withOpacity(0.5),
+      AppColors.white.withValues(alpha: 0.5),
       BlendMode.srcIn,
     );
     return Scaffold(
@@ -47,7 +47,7 @@ class _MainViewState extends State<MainView> {
           child: DecoratedBox(
             decoration: BoxDecoration(
               border: Border.all(
-                color: AppColors.black.withOpacity(0.04),
+                color: AppColors.black.withValues(alpha: 0.04),
               ),
             ),
             child: BottomNavigationBar(

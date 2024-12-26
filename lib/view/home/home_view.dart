@@ -25,7 +25,10 @@ class HomeView extends StatelessWidget {
               case Status.loaded:
                 return HomeBody(value: value);
               case Status.error:
-                return Text(value.toString());
+                return Text(
+                  value.responseState.message.toString(),
+                  style: const TextStyle(color: Colors.white),
+                );
               default:
                 return const SizedBox();
             }

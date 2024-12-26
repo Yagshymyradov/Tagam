@@ -7,6 +7,7 @@ abstract final class NavigationRouteNames {
   static const onboarding = '/onboarding';
   static const mainScreen = '/main_screen';
   static const home = '/home';
+  static const profile = '/profile';
   static const search = '/search';
   static const restaurantDetails = '/restaurants_details';
   static const productDetails = '/product_details';
@@ -18,6 +19,7 @@ abstract final class Navigation {
     NavigationRouteNames.onboarding: (_) => const OnboardingView(),
     NavigationRouteNames.mainScreen: (_) => const MainView(),
     NavigationRouteNames.home: (_) => const HomeView(),
+    NavigationRouteNames.profile: (_) => const ProfileView(),
     NavigationRouteNames.search: (_) => const SearchView(),
     NavigationRouteNames.productDetails: (_) => const ProductDetailsView(),
   };

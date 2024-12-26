@@ -24,7 +24,7 @@ class SearchView extends StatelessWidget {
                 crossAxisCount: 2,
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 14,
-                childAspectRatio: 0.58,
+                mainAxisExtent: 300,
               ),
             ),
           ),
