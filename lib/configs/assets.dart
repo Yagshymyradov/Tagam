@@ -40,6 +40,9 @@ final class Assets {
   static const String moon = '$_icons/moon.svg';
   static const String settings = '$_icons/settings.svg';
   static const String sun = '$_icons/sun.svg';
+  static const String delete = '$_icons/delete.svg';
+  static const String fork = '$_icons/fork.svg';
+  static const String comment = '$_icons/comment.svg';
 
   static const String foodGroup = '$_images/food-group.png';
   static const String desertGroup = '$_images/desert-group.png';

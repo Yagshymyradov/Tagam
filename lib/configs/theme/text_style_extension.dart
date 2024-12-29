@@ -101,10 +101,10 @@ final textStyleDark = TextStylesEx(
     fontWeight: FontWeight.w400,
   ),
   priceMedium: const TextStyle(
-    fontSize: 16,
+    fontSize: 18,
     fontStyle: FontStyle.italic,
     color: AppColors.white,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w900,
   ),
   priceLarge: const TextStyle(
     fontSize: 22,

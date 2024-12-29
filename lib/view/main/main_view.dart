@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../configs/assets.dart';
+import '../../configs/routes/routes.dart';
 import '../../configs/theme/app_colors.dart';
 import '../view.dart';
 
@@ -21,11 +22,21 @@ class _MainViewState extends State<MainView> {
     const HomeView(),
     const Text('Categories'),
     const Text('Cashback Prize'),
-    const Text('Sopping Cart'),
+    const SizedBox(),
     const ProfileView(),
   ];
 
   void onTapNavButton(int value) {
+    if (value == 3) {
+      Navigator.pushNamed(context, NavigationRouteNames.card).whenComplete(
+        () {
+          _currentPage = 0;
+          setState(() {
+            //no-op
+          });
+        },
+      );
+    }
     _currentPage = value;
     setState(() {
       //no-op

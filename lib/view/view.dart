@@ -1,3 +1,4 @@
+export 'card/card_view.dart';
 export 'home/home_view.dart';
 export 'main/main_view.dart';
 export 'onboarding/onboarding_view.dart';

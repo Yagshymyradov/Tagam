@@ -11,6 +11,7 @@ abstract final class NavigationRouteNames {
   static const search = '/search';
   static const restaurantDetails = '/restaurants_details';
   static const productDetails = '/product_details';
+  static const card = '/card';
 }
 
 abstract final class Navigation {
@@ -22,6 +23,7 @@ abstract final class Navigation {
     NavigationRouteNames.profile: (_) => const ProfileView(),
     NavigationRouteNames.search: (_) => const SearchView(),
     NavigationRouteNames.productDetails: (_) => const ProductDetailsView(),
+    NavigationRouteNames.card: (_) => const CardView(),
   };
 
   static Route<Object> onGenerateRoute(RouteSettings settings) {
