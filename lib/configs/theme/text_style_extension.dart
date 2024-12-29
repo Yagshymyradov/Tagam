@@ -13,6 +13,8 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
   final TextStyle? bodyLargeEx;
   final TextStyle? bodySmallEx;
   final TextStyle? bodySmallReverse;
+  final TextStyle? headlineLargeEx;
+  final TextStyle? priceBold;
 
   const TextStylesEx({
     required this.labelLargeX,
@@ -25,6 +27,8 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     required this.bodyLargeEx,
     required this.bodySmallEx,
     required this.bodySmallReverse,
+    required this.headlineLargeEx,
+    required this.priceBold,
   });
 
   @override
@@ -39,6 +43,8 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     TextStyle? bodyLargeEx,
     TextStyle? bodySmallEx,
     TextStyle? bodySmallReverse,
+    TextStyle? headlineLargeEx,
+    TextStyle? priceBold,
   }) {
     return TextStylesEx(
       labelLargeX: labelLargeX ?? this.labelLargeX,
@@ -51,6 +57,8 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       bodyLargeEx: bodyLargeEx ?? this.bodyLargeEx,
       bodySmallEx: bodySmallEx ?? this.bodySmallEx,
       bodySmallReverse: bodySmallReverse ?? this.bodySmallReverse,
+      headlineLargeEx: headlineLargeEx ?? this.headlineLargeEx,
+      priceBold: priceBold ?? this.priceBold,
     );
   }
 
@@ -70,6 +78,8 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       bodyLargeEx: bodyLargeEx,
       bodySmallEx: bodySmallEx,
       bodySmallReverse: bodySmallReverse,
+      headlineLargeEx: headlineLargeEx,
+      priceBold: priceBold,
     );
   }
 }
@@ -85,9 +95,9 @@ final textStyleDark = TextStylesEx(
     color: AppColors.white,
     fontWeight: FontWeight.w400,
   ),
-  labelSmallX: const TextStyle(
+  labelSmallX: TextStyle(
     fontSize: 12,
-    color: AppColors.white,
+    color: AppColors.white.withValues(alpha: 0.6),
     fontWeight: FontWeight.w400,
   ),
   priceMedium: const TextStyle(
@@ -126,5 +136,17 @@ final textStyleDark = TextStylesEx(
     fontSize: 14,
     color: AppColors.black.withValues(alpha: 0.8),
     fontWeight: FontWeight.w500,
+  ),
+  headlineLargeEx: const TextStyle(
+    fontSize: 24,
+    color: AppColors.white,
+    fontStyle: FontStyle.italic,
+    fontWeight: FontWeight.w900,
+  ),
+  priceBold: const TextStyle(
+    fontSize: 16,
+    color: AppColors.white,
+    fontStyle: FontStyle.italic,
+    fontWeight: FontWeight.w900,
   ),
 );

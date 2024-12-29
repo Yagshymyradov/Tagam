@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../configs/components/counter_card.dart';
 import '../../../configs/extensions.dart';
 
 class ProductCostAndCount extends StatelessWidget {
@@ -8,7 +9,6 @@ class ProductCostAndCount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
     final textThemeEx = context.textThemeEx;
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -24,44 +24,7 @@ class ProductCostAndCount extends StatelessWidget {
               '60 manat',
               style: textThemeEx.priceLarge,
             ),
-            DecoratedBox(
-              decoration: BoxDecoration(
-                color: colorScheme.secondaryContainer,
-                borderRadius: BorderRadius.circular(33),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(4),
-                child: Row(
-                  spacing: 10,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      style: IconButton.styleFrom(
-                        minimumSize: Size.zero,
-                        padding: EdgeInsets.zero,
-                        fixedSize: const Size(32, 32),
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      ),
-                      icon: const Icon(Icons.remove, size: 18),
-                    ),
-                    Text(
-                      '2',
-                      style: textTheme.headlineSmall,
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      style: IconButton.styleFrom(
-                        minimumSize: Size.zero,
-                        padding: EdgeInsets.zero,
-                        fixedSize: const Size(32, 32),
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      ),
-                      icon: const Icon(Icons.add, size: 18),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            const CounterCard(),
           ],
         ),
       ),
