@@ -43,6 +43,9 @@ final class Assets {
   static const String delete = '$_icons/delete.svg';
   static const String fork = '$_icons/fork.svg';
   static const String comment = '$_icons/comment.svg';
+  static const String delivered = '$_icons/delivered.svg';
+  static const String pending = '$_icons/pending.svg';
+  static const String rejected = '$_icons/rejected.svg';
 
   static const String foodGroup = '$_images/food-group.png';
   static const String desertGroup = '$_images/desert-group.png';
