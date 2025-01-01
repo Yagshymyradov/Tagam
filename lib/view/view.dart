@@ -1,6 +1,7 @@
 export 'card/card_view.dart';
 export 'home/home_view.dart';
 export 'main/main_view.dart';
+export 'my_orders/my_orders_view.dart';
 export 'onboarding/onboarding_view.dart';
 export 'product_details/product_details_view.dart';
 export 'profile/profile_view.dart';
