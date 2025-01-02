@@ -3,7 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../configs/assets.dart';
 import '../../../configs/components/price_with_rich_text.dart';
-import '../../../configs/extensions.dart';
+import '../../../configs/theme.dart';
+import 'widgets.dart';
 
 class MyOrderTile extends StatelessWidget {
   const MyOrderTile({super.key});
@@ -12,10 +13,16 @@ class MyOrderTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final textThemeEx = context.textThemeEx;
-    final colorScheme = Theme.of(context).colorScheme;
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        showModalBottomSheet<void>(
+          context: context,
+          isScrollControlled: true,
+          useSafeArea: true,
+          builder: (context) => const MyOrderBottomSheet(),
+        );
+      },
       child: Row(
         spacing: 10,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,8 +74,8 @@ class MyOrderTile extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               const PriceWithRichText(
-                price: '120 tmt',
-                spanText: 'Şu gün 18:40',
+                first: '120 tmt',
+                second: 'Şu gün 18:40',
               ),
             ],
           ),

@@ -41,6 +41,12 @@ final class AppTheme {
         minWidth: 48,
       ),
     ),
+    bottomSheetTheme: BottomSheetThemeData(
+      shape: Border.all(
+        color: AppColors.black.withValues(alpha: 0.04),
+      ),
+      backgroundColor: AppColors.black,
+    ),
     textTheme: AppTextTheme.darkTextTheme,
     extensions: [textStyleDark],
     appBarTheme: const AppBarTheme(

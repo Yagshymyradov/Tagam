@@ -31,8 +31,8 @@ class OrderTile extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               const PriceWithRichText(
-                price: '120 tmt',
-                spanText: '200gr',
+                first: '120 tmt',
+                second: '200gr',
               ),
             ],
           ),

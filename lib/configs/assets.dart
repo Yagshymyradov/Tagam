@@ -46,6 +46,10 @@ final class Assets {
   static const String delivered = '$_icons/delivered.svg';
   static const String pending = '$_icons/pending.svg';
   static const String rejected = '$_icons/rejected.svg';
+  static const String deliveredWO = '$_icons/delivered-w-o.svg';
+  static const String refresh = '$_icons/refresh.svg';
+  static const String messageOutline = '$_icons/message-outline.svg';
+  static const String radioOn = '$_icons/radio-on.svg';
 
   static const String foodGroup = '$_images/food-group.png';
   static const String desertGroup = '$_images/desert-group.png';
