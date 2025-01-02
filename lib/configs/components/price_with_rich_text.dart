@@ -4,13 +4,15 @@ import '../extensions.dart';
 import '../theme/app_colors.dart';
 
 class PriceWithRichText extends StatelessWidget {
-  final String price;
-  final String spanText;
+  final String first;
+  final String second;
+  final TextStyle? style;
 
   const PriceWithRichText({
     super.key,
-    required this.price,
-    required this.spanText,
+    required this.first,
+    required this.second,
+    this.style,
   });
 
   @override
@@ -21,8 +23,8 @@ class PriceWithRichText extends StatelessWidget {
       text: TextSpan(
         children: [
           TextSpan(
-            text: price,
-            style: textThemeEx.priceBold,
+            text: first,
+            style: style ?? textThemeEx.priceBold,
           ),
           const WidgetSpan(child: SizedBox(width: 6)),
           WidgetSpan(
@@ -39,8 +41,8 @@ class PriceWithRichText extends StatelessWidget {
           ),
           const WidgetSpan(child: SizedBox(width: 6)),
           TextSpan(
-            text: spanText,
-            style: textThemeEx.labelSmallX,
+            text: second,
+            style: style ?? textThemeEx.labelSmallX,
           ),
         ],
       ),

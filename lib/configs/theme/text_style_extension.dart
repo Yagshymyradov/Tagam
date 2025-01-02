@@ -16,6 +16,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
   final TextStyle? headlineLargeEx;
   final TextStyle? priceBold;
   final TextStyle? headlineSmallXWO;
+  final TextStyle? priceSmall;
 
   const TextStylesEx({
     required this.labelLargeX,
@@ -31,6 +32,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     required this.headlineLargeEx,
     required this.priceBold,
     required this.headlineSmallXWO,
+    required this.priceSmall,
   });
 
   @override
@@ -48,6 +50,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     TextStyle? headlineLargeEx,
     TextStyle? priceBold,
     TextStyle? headlineSmallXWO,
+    TextStyle? priceSmall,
   }) {
     return TextStylesEx(
       labelLargeX: labelLargeX ?? this.labelLargeX,
@@ -63,6 +66,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       headlineLargeEx: headlineLargeEx ?? this.headlineLargeEx,
       priceBold: priceBold ?? this.priceBold,
       headlineSmallXWO: headlineSmallXWO ?? this.headlineSmallXWO,
+      priceSmall: priceSmall ?? this.priceSmall,
     );
   }
 
@@ -85,6 +89,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       headlineLargeEx: headlineLargeEx,
       priceBold: priceBold,
       headlineSmallXWO: headlineSmallXWO,
+      priceSmall: priceSmall,
     );
   }
 }
@@ -150,6 +155,12 @@ final textStyleDark = TextStylesEx(
   ),
   priceBold: const TextStyle(
     fontSize: 16,
+    color: AppColors.white,
+    fontStyle: FontStyle.italic,
+    fontWeight: FontWeight.w900,
+  ),
+  priceSmall: const TextStyle(
+    fontSize: 14,
     color: AppColors.white,
     fontStyle: FontStyle.italic,
     fontWeight: FontWeight.w900,
