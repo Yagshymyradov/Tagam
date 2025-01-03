@@ -17,7 +17,7 @@ class SavedDataCards extends StatelessWidget {
         SavedDataCard(
           title: 'Halanlarym',
           icon: Assets.heart,
-          onTap: (){},
+          onTap: () {},
         ),
         SavedDataCard(
           title: 'Sargytlarym',
@@ -30,7 +30,10 @@ class SavedDataCards extends StatelessWidget {
         SavedDataCard(
           title: 'Salgylarym',
           icon: Assets.mapLocation,
-          onTap: () {},
+          onTap: () => Navigator.pushNamed(
+            context,
+            NavigationRouteNames.myAddresses,
+          ),
         ),
       ],
     );
