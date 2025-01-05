@@ -17,6 +17,10 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
   final TextStyle? priceBold;
   final TextStyle? headlineSmallXWO;
   final TextStyle? priceSmall;
+  final TextStyle? titleSmallX;
+  final TextStyle? titleMediumX;
+  final TextStyle? buttonText;
+  final TextStyle? errorButtonText;
 
   const TextStylesEx({
     required this.labelLargeX,
@@ -33,6 +37,10 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     required this.priceBold,
     required this.headlineSmallXWO,
     required this.priceSmall,
+    required this.titleSmallX,
+    required this.titleMediumX,
+    required this.buttonText,
+    required this.errorButtonText,
   });
 
   @override
@@ -51,6 +59,10 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     TextStyle? priceBold,
     TextStyle? headlineSmallXWO,
     TextStyle? priceSmall,
+    TextStyle? titleSmallX,
+    TextStyle? titleMediumX,
+    TextStyle? buttonText,
+    TextStyle? errorButtonText,
   }) {
     return TextStylesEx(
       labelLargeX: labelLargeX ?? this.labelLargeX,
@@ -67,6 +79,10 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       priceBold: priceBold ?? this.priceBold,
       headlineSmallXWO: headlineSmallXWO ?? this.headlineSmallXWO,
       priceSmall: priceSmall ?? this.priceSmall,
+      titleSmallX: titleSmallX ?? this.titleSmallX,
+      titleMediumX: titleMediumX ?? this.titleMediumX,
+      buttonText: buttonText ?? this.buttonText,
+      errorButtonText: errorButtonText ?? this.errorButtonText,
     );
   }
 
@@ -90,6 +106,10 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       priceBold: priceBold,
       headlineSmallXWO: headlineSmallXWO,
       priceSmall: priceSmall,
+      titleSmallX: titleSmallX,
+      titleMediumX: titleMediumX,
+      buttonText: buttonText,
+      errorButtonText: errorButtonText,
     );
   }
 }
@@ -168,6 +188,26 @@ final textStyleDark = TextStylesEx(
   headlineSmallXWO: TextStyle(
     fontSize: 20,
     color: AppColors.white.withValues(alpha: 0.6),
+    fontWeight: FontWeight.w400,
+  ),
+  titleSmallX: const TextStyle(
+    fontSize: 14,
+    color: AppColors.manatee,
+    fontWeight: FontWeight.w400,
+  ),
+  titleMediumX: const TextStyle(
+    fontSize: 16,
+    color: AppColors.romanSilver,
+    fontWeight: FontWeight.w400,
+  ),
+  buttonText: const TextStyle(
+    fontSize: 18,
+    color: AppColors.black,
+    fontWeight: FontWeight.w400,
+  ),
+  errorButtonText: const TextStyle(
+    fontSize: 18,
+    color: AppColors.radicalRed,
     fontWeight: FontWeight.w400,
   ),
 );
