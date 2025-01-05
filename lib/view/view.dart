@@ -1,3 +1,4 @@
+export 'add_address/add_address_view.dart';
 export 'card/card_view.dart';
 export 'home/home_view.dart';
 export 'main/main_view.dart';

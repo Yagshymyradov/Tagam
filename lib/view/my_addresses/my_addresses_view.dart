@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../configs/assets.dart';
 import '../../configs/extensions.dart';
+import '../../configs/routes/routes.dart';
 
 class MyAddressesView extends StatelessWidget {
   const MyAddressesView({super.key});
@@ -30,7 +31,10 @@ class MyAddressesView extends StatelessWidget {
         ),
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(
+              context,
+              NavigationRouteNames.addAddress,
+            ),
             child: Text(
               'Salgy Goş',
               style: textTheme.labelMedium,
@@ -78,7 +82,7 @@ class MyAddressesCard extends StatelessWidget {
       titleAlignment: ListTileTitleAlignment.top,
       trailing: InkWell(
         splashColor: Colors.transparent,
-        onTap: (){},
+        onTap: () {},
         child: SvgPicture.asset(Assets.write),
       ),
     );
