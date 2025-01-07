@@ -6,6 +6,8 @@ import '../assets.dart';
 import '../routes/routes.dart';
 import '../theme/app_colors.dart';
 import 'components.dart';
+import 'favorite_button.dart';
+import 'optimized_image.dart';
 
 class RestaurantsCard extends StatelessWidget {
   final AllRestaurantsModel? restaurant;
@@ -39,16 +41,26 @@ class RestaurantsCard extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      AppColors.white.withOpacity(1),
-                      AppColors.white.withOpacity(0.6),
+                      AppColors.white.withValues(alpha: 1),
+                      AppColors.white.withValues(alpha: 0.6),
                     ],
                   ).createShader(bounds);
                 },
-                child: Image.network(
-                  restaurant?.logo ?? '',
-                  fit: BoxFit.cover,
+                child: OptimizedImage(
+                  imageUrl: restaurant?.logo ?? '',
                   width: double.infinity,
                   height: 200,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => Container(
+                    color: AppColors.mediumGray,
+                    width: double.infinity,
+                    height: 200,
+                  ),
+                  placeholderBuilder: (context) => Container(
+                    color: AppColors.mediumGray,
+                    width: double.infinity,
+                    height: 200,
+                  ),
                 ),
               ),
             ),
@@ -105,6 +117,11 @@ class RestaurantsCard extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            const Positioned(
+              right: 8,
+              top: 8,
+              child: FavoriteButton(),
             ),
           ],
         ),

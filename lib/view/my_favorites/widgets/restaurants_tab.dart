@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+
+import '../../../configs/components/restaurants_card.dart';
+
+class RestaurantsTab extends StatelessWidget {
+  const RestaurantsTab({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      itemCount: 10,
+      itemBuilder: (context, index) => const RestaurantsCard(),
+      separatorBuilder: (context, index) => const SizedBox(height: 20),
+    );
+  }
+}

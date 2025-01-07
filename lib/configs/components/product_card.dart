@@ -1,38 +1,12 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../../configs/assets.dart';
 import '../../../configs/routes/routes.dart';
 import '../../../configs/theme.dart';
+import 'favorite_button.dart';
 
-class ProductCard extends StatefulWidget {
+class ProductCard extends StatelessWidget {
   final Color? backgroundColor;
 
   const ProductCard({super.key, this.backgroundColor});
-
-  @override
-  State<ProductCard> createState() => _ProductCardState();
-}
-
-class _ProductCardState extends State<ProductCard> {
-  bool selected = false;
-  bool favorite = false;
-
-  void onSelectedProduct() {
-    selected = !selected;
-    setState(() {
-      //no-op
-    });
-  }
-
-  void onFavoriteTap() {
-    favorite = !favorite;
-    setState(() {
-      //no-op
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +14,7 @@ class _ProductCardState extends State<ProductCard> {
     final colorScheme = Theme.of(context).colorScheme;
     return Material(
       borderRadius: BorderRadius.circular(16),
-      color: widget.backgroundColor ?? colorScheme.primaryContainer,
+      color: backgroundColor ?? colorScheme.primaryContainer,
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
         onTap: () => Navigator.pushNamed(
@@ -64,41 +38,14 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                   ),
                 ),
-                Positioned(
+                const Positioned(
                   right: 12,
                   top: 12,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-                      child: SizedBox(
-                        height: 32,
-                        width: 32,
-                        child: IconButton(
-                          onPressed: onFavoriteTap,
-                          style: IconButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            backgroundColor: AppColors.black.withValues(alpha: 0.12),
-                            side: BorderSide(color: AppColors.white.withValues(alpha: 0.06)),
-                          ),
-                          icon: AnimatedSwitcher(
-                            duration: const Duration(milliseconds: 320),
-                            reverseDuration: const Duration(milliseconds: 320),
-                            child: favorite
-                                ? SvgPicture.asset(
-                                    key: const ValueKey(1),
-                                    Assets.heartFilled,
-                                    height: 20,
-                                  )
-                                : SvgPicture.asset(
-                                    key: const ValueKey(0),
-                                    Assets.heart,
-                                    height: 20,
-                                  ),
-                          ),
-                        ),
-                      ),
-                    ),
+                  child: FavoriteButton(
+                    height: 32,
+                    blur: 20,
+                    colorOpacity: 0.12,
+                    iconHeight: 20,
                   ),
                 ),
               ],
@@ -124,35 +71,6 @@ class _ProductCardState extends State<ProductCard> {
                         '120 tmt',
                         style: context.textThemeEx.priceMedium,
                       ),
-                      AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 320),
-                        reverseDuration: const Duration(milliseconds: 320),
-                        child: selected
-                            ? IconButton(
-                                key: const ValueKey(1),
-                                onPressed: onSelectedProduct,
-                                style: IconButton.styleFrom(
-                                  backgroundColor: colorScheme.scrim,
-                                  maximumSize: const Size(32, 32),
-                                  minimumSize: const Size(32, 32),
-                                  padding: EdgeInsets.zero,
-                                ),
-                                icon: const Icon(
-                                  Icons.check,
-                                  size: 18,
-                                ),
-                              )
-                            : IconButton(
-                                key: const ValueKey(0),
-                                style: IconButton.styleFrom(
-                                  maximumSize: const Size(32, 32),
-                                  minimumSize: const Size(32, 32),
-                                  padding: EdgeInsets.zero,
-                                ),
-                                onPressed: onSelectedProduct,
-                                icon: const Icon(Icons.add, size: 18),
-                              ),
-                      ),
                     ],
                   ),
                 ],
@@ -161,6 +79,59 @@ class _ProductCardState extends State<ProductCard> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class SelectProductButton extends StatefulWidget {
+  const SelectProductButton({super.key});
+
+  @override
+  State<SelectProductButton> createState() => _SelectProductButtonState();
+}
+
+class _SelectProductButtonState extends State<SelectProductButton> {
+  bool selected = false;
+
+  void onSelectedProduct() {
+    selected = !selected;
+    setState(() {
+      //no-op
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 320),
+      reverseDuration: const Duration(milliseconds: 320),
+      child: selected
+          ? IconButton(
+              key: const ValueKey(1),
+              onPressed: onSelectedProduct,
+              style: IconButton.styleFrom(
+                backgroundColor: colorScheme.scrim,
+                maximumSize: const Size(32, 32),
+                minimumSize: const Size(32, 32),
+                padding: EdgeInsets.zero,
+              ),
+              icon: const Icon(
+                Icons.check,
+                size: 18,
+              ),
+            )
+          : IconButton(
+              key: const ValueKey(0),
+              style: IconButton.styleFrom(
+                maximumSize: const Size(32, 32),
+                minimumSize: const Size(32, 32),
+                padding: EdgeInsets.zero,
+              ),
+              onPressed: onSelectedProduct,
+              icon: const Icon(Icons.add, size: 18),
+            ),
     );
   }
 }
