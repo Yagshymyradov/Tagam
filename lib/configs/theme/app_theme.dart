@@ -11,6 +11,7 @@ final class AppTheme {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     useMaterial3: true,
+    fontFamily: 'Gilroy',
     scaffoldBackgroundColor: AppColors.black,
     colorScheme: AppColorScheme.colorSchemeDark,
     progressIndicatorTheme: const ProgressIndicatorThemeData(
