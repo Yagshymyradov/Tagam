@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'widgets/widgets.dart';
 
@@ -27,11 +26,12 @@ class ProductDetailsView extends StatelessWidget {
                   SliverToBoxAdapter(child: ProductSimilarDishesText()),
                   SliverToBoxAdapter(child: SizedBox(height: 20)),
                   ProductSimilarDishes(),
+                  SliverToBoxAdapter(child: SizedBox(height: 90)),
                 ],
               ),
             ),
           ),
-          const ProductOrderButton(),
+          const ProductOrderButton(text: 'Add order:', price: '  120 manat'),
         ],
       ),
     );

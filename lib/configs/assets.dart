@@ -52,6 +52,7 @@ final class Assets {
   static const String radioOn = '$_icons/radio-on.svg';
   static const String place = '$_icons/place.svg';
   static const String write = '$_icons/write.svg';
+  static const String heartFilled = '$_icons/heart-filled.svg';
 
   static const String foodGroup = '$_images/food-group.png';
   static const String desertGroup = '$_images/desert-group.png';

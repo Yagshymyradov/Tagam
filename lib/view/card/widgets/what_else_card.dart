@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../configs/components/product_card.dart';
 import '../../../configs/extensions.dart';
+import '../../../configs/theme/app_colors.dart';
 import 'widgets.dart';
 
 class WhatElseCard extends StatelessWidget {
@@ -35,8 +37,10 @@ class WhatElseCard extends StatelessWidget {
                 mainAxisSpacing: 10,
                 mainAxisExtent: 285,
               ),
-              itemBuilder: (context, index) => const WhatElseProductCard(),
-            )
+              itemBuilder: (context, index) => ProductCard(
+                backgroundColor: AppColors.white.withValues(alpha: 0.08),
+              ),
+            ),
           ],
         ),
       ),

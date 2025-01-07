@@ -22,9 +22,9 @@ class SearchView extends StatelessWidget {
               itemBuilder: (context, index) => const ProductCard(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 14,
-                mainAxisExtent: 300,
+                mainAxisSpacing: 14,
+                crossAxisSpacing: 8,
+                mainAxisExtent: 285,
               ),
             ),
           ),

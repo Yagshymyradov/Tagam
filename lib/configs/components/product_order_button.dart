@@ -2,10 +2,17 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../../../configs/theme.dart';
+import '../theme.dart';
 
 class ProductOrderButton extends StatelessWidget {
-  const ProductOrderButton({super.key});
+  final String text;
+  final String price;
+
+  const ProductOrderButton({
+    super.key,
+    required this.text,
+    required this.price,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +46,11 @@ class ProductOrderButton extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: 'Add order:',
+                        text: text,
                         style: textThemeEx.orderText,
                       ),
                       TextSpan(
-                        text: '  120 manat',
+                        text: price,
                         style: textThemeEx.orderText?.copyWith(
                           fontStyle: FontStyle.italic,
                         ),
