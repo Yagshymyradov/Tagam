@@ -20,7 +20,7 @@ class _MainViewState extends State<MainView> {
 
   final List<Widget> _pages = [
     const HomeView(),
-    const Text('Categories'),
+    const CategoryView(),
     const Text('Cashback Prize'),
     const SizedBox(),
     const ProfileView(),

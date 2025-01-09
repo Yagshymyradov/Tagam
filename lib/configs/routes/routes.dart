@@ -8,6 +8,7 @@ abstract final class NavigationRouteNames {
   static const mainScreen = '/main_screen';
   static const home = '/home';
   static const profile = '/profile';
+  static const category = '/category';
   static const search = '/search';
   static const restaurantDetails = '/restaurants_details';
   static const productDetails = '/product_details';
@@ -32,6 +33,7 @@ abstract final class Navigation {
     NavigationRouteNames.myAddresses: (_) => const MyAddressesView(),
     NavigationRouteNames.addAddress: (_) => const AddAddressView(),
     NavigationRouteNames.myFavorites: (_) => const MyFavoritesView(),
+    NavigationRouteNames.category: (_) => const CategoryView(),
   };
 
   static Route<Object> onGenerateRoute(RouteSettings settings) {
