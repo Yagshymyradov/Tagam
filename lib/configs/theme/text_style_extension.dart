@@ -21,6 +21,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
   final TextStyle? titleMediumX;
   final TextStyle? buttonText;
   final TextStyle? errorButtonText;
+  final TextStyle? headlineMediumEx;
 
   const TextStylesEx({
     required this.labelLargeX,
@@ -41,6 +42,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     required this.titleMediumX,
     required this.buttonText,
     required this.errorButtonText,
+    required this.headlineMediumEx,
   });
 
   @override
@@ -63,6 +65,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     TextStyle? titleMediumX,
     TextStyle? buttonText,
     TextStyle? errorButtonText,
+    TextStyle? headlineMediumEx,
   }) {
     return TextStylesEx(
       labelLargeX: labelLargeX ?? this.labelLargeX,
@@ -83,6 +86,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       titleMediumX: titleMediumX ?? this.titleMediumX,
       buttonText: buttonText ?? this.buttonText,
       errorButtonText: errorButtonText ?? this.errorButtonText,
+      headlineMediumEx: headlineMediumEx ?? this.headlineMediumEx,
     );
   }
 
@@ -110,6 +114,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       titleMediumX: titleMediumX,
       buttonText: buttonText,
       errorButtonText: errorButtonText,
+      headlineMediumEx: headlineMediumEx,
     );
   }
 }
@@ -170,6 +175,14 @@ final textStyleDark = TextStylesEx(
   headlineLargeEx: const TextStyle(
     fontSize: 24,
     color: AppColors.white,
+    fontFamily: 'ObjectSans',
+    fontStyle: FontStyle.italic,
+    fontWeight: FontWeight.w900,
+  ),
+  headlineMediumEx: const TextStyle(
+    fontSize: 16,
+    color: AppColors.white,
+    fontFamily: 'ObjectSans',
     fontStyle: FontStyle.italic,
     fontWeight: FontWeight.w900,
   ),
