@@ -12,6 +12,8 @@ final class AppColors {
   static const radicalRed = Color(0xFFFF3347);
   static const lightBlueViolet = Color(0xFFA393F5);
   static const mediumSlateBlue = Color(0xFF735CE6);
+  static const screaminGreen = Color(0xFF7EF845);
+  static const kellyGreen = Color(0xFF48C600);
   static const darkGray = Color(0XFF191919);
   static const charlestonGreen = Color(0XFF292929);
   static const manatee = Color(0XFF969A9F);

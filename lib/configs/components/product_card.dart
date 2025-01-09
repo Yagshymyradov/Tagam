@@ -71,6 +71,7 @@ class ProductCard extends StatelessWidget {
                         '120 tmt',
                         style: context.textThemeEx.priceMedium,
                       ),
+                      const SelectProductButton(),
                     ],
                   ),
                 ],

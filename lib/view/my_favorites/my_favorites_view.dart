@@ -30,9 +30,9 @@ class MyFavoritesView extends StatelessWidget {
             style: textThemeEx.headlineLargeEx,
           ),
           bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(60),
+            preferredSize: const Size.fromHeight(65),
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 16),
+              padding: const EdgeInsets.fromLTRB(8, 0, 8, 16),
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: colorScheme.primaryContainer,

@@ -8,6 +8,7 @@ class RestaurantsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       itemCount: 10,
       itemBuilder: (context, index) => const RestaurantsCard(),
       separatorBuilder: (context, index) => const SizedBox(height: 20),

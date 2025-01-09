@@ -19,26 +19,20 @@ class SmallBlurCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return ClipRRect(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(23),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: AppColors.white.withValues(alpha: 0.12),
-            border: Border.all(
-              color: AppColors.white.withValues(alpha: 0.06),
-            ),
-          ),
+        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+        child: ColoredBox(
+          color: AppColors.white.withValues(alpha: 0.1),
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 10,
               vertical: 8,
             ),
             child: Row(
+              spacing: 6,
               children: [
                 SvgPicture.asset(icon),
-                const SizedBox(width: 4),
                 Text(
                   title,
                   style: textTheme.labelMedium,
