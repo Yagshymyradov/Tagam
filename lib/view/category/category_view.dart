@@ -19,6 +19,7 @@ class CategoryView extends StatelessWidget {
         ),
       ),
       body: GridView.builder(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           mainAxisSpacing: 8,
