@@ -12,6 +12,7 @@ abstract final class NavigationRouteNames {
   static const search = '/search';
   static const restaurantDetails = '/restaurants_details';
   static const productDetails = '/product_details';
+  static const categoryDetails = '/category_details';
   static const card = '/card';
   static const myOrders = '/my_orders';
   static const myAddresses = '/my_addresses';
@@ -26,14 +27,15 @@ abstract final class Navigation {
     NavigationRouteNames.mainScreen: (_) => const MainView(),
     NavigationRouteNames.home: (_) => const HomeView(),
     NavigationRouteNames.profile: (_) => const ProfileView(),
+    NavigationRouteNames.category: (_) => const CategoryView(),
     NavigationRouteNames.search: (_) => const SearchView(),
     NavigationRouteNames.productDetails: (_) => const ProductDetailsView(),
+    NavigationRouteNames.categoryDetails: (_) => const CategoryDetailsView(),
     NavigationRouteNames.card: (_) => const CardView(),
     NavigationRouteNames.myOrders: (_) => const MyOrdersView(),
     NavigationRouteNames.myAddresses: (_) => const MyAddressesView(),
     NavigationRouteNames.addAddress: (_) => const AddAddressView(),
     NavigationRouteNames.myFavorites: (_) => const MyFavoritesView(),
-    NavigationRouteNames.category: (_) => const CategoryView(),
   };
 
   static Route<Object> onGenerateRoute(RouteSettings settings) {

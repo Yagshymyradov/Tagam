@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../configs/components/optimized_image.dart';
 import '../../../configs/extensions.dart';
+import '../../../configs/routes/routes.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({super.key});
@@ -11,22 +12,25 @@ class CategoryCard extends StatelessWidget {
     final textThemeEx = context.textThemeEx;
     final colorScheme = Theme.of(context).colorScheme;
 
-    return ClipRRect(
+    return Material(
       borderRadius: BorderRadius.circular(14),
-      child: ColoredBox(
-        color: colorScheme.primaryContainer,
+      color: colorScheme.primaryContainer,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(14),
+        onTap: () => Navigator.pushNamed(
+          context,
+          NavigationRouteNames.categoryDetails,
+        ),
         child: Stack(
           children: [
             OptimizedImage(
               imageUrl: '',
               width: double.infinity,
               fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => Container(
-                color: colorScheme.primaryContainer,
+              errorBuilder: (context, error, stackTrace) => const SizedBox(
                 width: double.infinity,
               ),
-              placeholderBuilder: (context) => Container(
-                color: colorScheme.primaryContainer,
+              placeholderBuilder: (context) => const SizedBox(
                 width: double.infinity,
               ),
             ),
