@@ -9,9 +9,9 @@ class RestaurantDetailsViewModel with ChangeNotifier {
 
   RestaurantDetailsViewModel({required this.restaurantDetailsRepository});
 
-  ApiResponse<AllRestaurantsModel> _responseState = ApiResponse.loading();
+  ApiResponse<RestaurantsModel> _responseState = ApiResponse.loading();
 
-  ApiResponse<AllRestaurantsModel> get responseState => _responseState;
+  ApiResponse<RestaurantsModel> get responseState => _responseState;
 
   Future<void> getRestaurantDetails(int restaurantId) async {
     _responseState = ApiResponse.loading();

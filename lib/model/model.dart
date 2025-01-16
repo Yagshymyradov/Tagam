@@ -1,1 +1,1 @@
-export 'home/home_model.dart';
+export 'restaurants/restaurants_model.dart';

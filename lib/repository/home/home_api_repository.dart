@@ -9,11 +9,11 @@ class HomeApiRepository implements HomeRepository {
   HomeApiRepository({required this.httpClient});
 
   @override
-  Future<List<AllRestaurantsModel>> getAllRestaurants() async {
+  Future<List<RestaurantsModel>> getAllRestaurants() async {
     return httpClient.get(
       AppUrl.allRestaurants,
       mapper: (data) => (data as List<dynamic>)
-          .map((e) => AllRestaurantsModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => RestaurantsModel.fromJson(e as Map<String, dynamic>))
           .toList(growable: false),
     );
   }

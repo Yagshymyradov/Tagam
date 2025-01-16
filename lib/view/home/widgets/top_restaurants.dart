@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../configs/components/components.dart';
-import '../../../model/home/home_model.dart';
+import '../../../model/restaurants/restaurants_model.dart';
 
 class TopRestaurants extends StatelessWidget {
-  final List<AllRestaurantsModel>? model;
+  final List<RestaurantsModel>? model;
 
   const TopRestaurants({
     super.key,
@@ -14,7 +14,7 @@ class TopRestaurants extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList.separated(
-      itemCount: 3,
+      itemCount: model?.length,
       itemBuilder: (context, index) => RestaurantsCard(
         restaurant: model?[index],
         isTop: true,

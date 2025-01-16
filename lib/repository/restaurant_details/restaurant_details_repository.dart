@@ -1,5 +1,5 @@
-import '../../model/home/home_model.dart';
+import '../../model/restaurants/restaurants_model.dart';
 
 abstract class RestaurantDetailsRepository {
-  Future<AllRestaurantsModel> getRestaurantDetails(int restaurantId);
+  Future<RestaurantsModel> getRestaurantDetails(int restaurantId);
 }

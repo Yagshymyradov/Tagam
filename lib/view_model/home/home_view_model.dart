@@ -10,9 +10,9 @@ class HomeViewModel with ChangeNotifier {
 
   HomeViewModel({required this.homeRepository});
 
-  ApiResponse<List<AllRestaurantsModel>> _responseState = ApiResponse.loading();
+  ApiResponse<List<RestaurantsModel>> _responseState = ApiResponse.loading();
 
-  ApiResponse<List<AllRestaurantsModel>> get responseState => _responseState;
+  ApiResponse<List<RestaurantsModel>> get responseState => _responseState;
 
   Future<void> getAllRestaurants() async {
     _responseState = ApiResponse.loading();

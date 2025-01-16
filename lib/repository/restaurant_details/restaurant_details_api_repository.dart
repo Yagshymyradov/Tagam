@@ -1,6 +1,6 @@
 import '../../configs/app_url.dart';
 import '../../data/json_http_client.dart';
-import '../../model/home/home_model.dart';
+import '../../model/restaurants/restaurants_model.dart';
 import 'restaurant_details_repository.dart';
 
 class RestaurantDetailsApiRepository implements RestaurantDetailsRepository {
@@ -9,10 +9,10 @@ class RestaurantDetailsApiRepository implements RestaurantDetailsRepository {
   RestaurantDetailsApiRepository({required this.httpClient});
 
   @override
-  Future<AllRestaurantsModel> getRestaurantDetails(int restaurantId) async {
+  Future<RestaurantsModel> getRestaurantDetails(int restaurantId) async {
     return httpClient.get(
       AppUrl.restaurantDetails(restaurantId),
-      mapper: (data) => AllRestaurantsModel.fromJson(data as Map<String, dynamic>),
+      mapper: (data) => RestaurantsModel.fromJson(data as Map<String, dynamic>),
     );
   }
 }

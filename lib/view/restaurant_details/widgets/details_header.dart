@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../configs/assets.dart';
-import '../../../configs/components/components.dart';
 import '../../../configs/theme/app_colors.dart';
 import '../../../model/model.dart';
 import 'widgets.dart';
 
 class DetailsHeader extends StatelessWidget {
-  final AllRestaurantsModel? data;
+  final RestaurantsModel? data;
 
   const DetailsHeader({
     super.key,
@@ -73,7 +71,7 @@ class DetailsHeader extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               Divider(
-                color: AppColors.white.withOpacity(0.14),
+                color: AppColors.white.withValues(alpha: 0.14),
               ),
             ],
           ),

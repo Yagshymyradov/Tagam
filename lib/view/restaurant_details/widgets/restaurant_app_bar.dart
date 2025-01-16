@@ -7,7 +7,7 @@ import '../../../model/model.dart';
 import 'details_header.dart';
 
 class RestaurantAppBar extends StatelessWidget {
-  final AllRestaurantsModel? data;
+  final RestaurantsModel? data;
 
   const RestaurantAppBar({super.key, this.data});
 

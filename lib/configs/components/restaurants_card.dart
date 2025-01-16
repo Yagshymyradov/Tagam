@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../model/home/home_model.dart';
+import '../../model/restaurants/restaurants_model.dart';
 import '../assets.dart';
 import '../routes/routes.dart';
 import '../theme/app_colors.dart';
@@ -41,7 +41,7 @@ extension RestaurantStatusExtension on RestaurantStatus {
 }
 
 class RestaurantsCard extends StatelessWidget {
-  final AllRestaurantsModel? restaurant;
+  final RestaurantsModel? restaurant;
   final RestaurantStatus status;
   final bool isTop;
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../configs/components/components.dart';
-import '../../../model/home/home_model.dart';
+import '../../../model/restaurants/restaurants_model.dart';
 
 class Restaurants extends StatelessWidget {
-  final List<AllRestaurantsModel>? model;
+  final List<RestaurantsModel>? model;
 
   const Restaurants({
     super.key,

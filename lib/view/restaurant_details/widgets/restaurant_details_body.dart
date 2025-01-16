@@ -4,7 +4,7 @@ import '../../../model/model.dart';
 import 'widgets.dart';
 
 class RestaurantDetailsBody extends StatefulWidget {
-  final AllRestaurantsModel? data;
+  final RestaurantsModel? data;
 
   const RestaurantDetailsBody({super.key, required this.data});
 

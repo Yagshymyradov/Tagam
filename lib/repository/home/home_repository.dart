@@ -1,5 +1,5 @@
-import '../../model/home/home_model.dart';
+import '../../model/restaurants/restaurants_model.dart';
 
 abstract class HomeRepository {
-  Future<List<AllRestaurantsModel>> getAllRestaurants();
+  Future<List<RestaurantsModel>> getAllRestaurants();
 }
