@@ -10,20 +10,50 @@ class HomeViewModel with ChangeNotifier {
 
   HomeViewModel({required this.homeRepository});
 
-  ApiResponse<List<RestaurantsModel>> _responseState = ApiResponse.loading();
+  ApiResponse<List<RestaurantsModel>> _restaurantsResponse = ApiResponse.loading();
 
-  ApiResponse<List<RestaurantsModel>> get responseState => _responseState;
+  ApiResponse<List<RestaurantsModel>> get restaurantsResponse => _restaurantsResponse;
 
-  Future<void> getAllRestaurants() async {
-    _responseState = ApiResponse.loading();
+  ApiResponse<List<RestaurantsModel>> _topRestaurantsResponse = ApiResponse.loading();
+
+  ApiResponse<List<RestaurantsModel>> get topRestaurantsResponse => _topRestaurantsResponse;
+
+  bool loading = false;
+  bool loaded = false;
+  bool error = false;
+
+  void whenLoad(bool load) {
+    loading = load;
     notifyListeners();
+  }
+
+  Future<void> getAllRestaurants({bool? needLoad}) async {
+    whenLoad(needLoad ?? true);
     try {
       final response = await homeRepository.getAllRestaurants();
-      _responseState = ApiResponse.loaded(response);
+      _restaurantsResponse = ApiResponse.loaded(response);
+      loaded = true;
     } catch (e) {
-      _responseState = ApiResponse.error(e.toString());
+      error = true;
     }
-    notifyListeners();
+    whenLoad(false);
+  }
+
+  Future<void> getTopRestaurants({bool? needLoad}) async {
+    whenLoad(needLoad ?? true);
+    try {
+      final response = await homeRepository.getTopRestaurants();
+      _topRestaurantsResponse = ApiResponse.loaded(response);
+      loaded = true;
+    } catch (e) {
+      error = true;
+    }
+    whenLoad(false);
+  }
+
+  Future<void> refresh() async {
+    await getAllRestaurants(needLoad: false);
+    await getTopRestaurants(needLoad: false);
   }
 
   void onRestaurantTap(BuildContext context, int restaurantId) {
