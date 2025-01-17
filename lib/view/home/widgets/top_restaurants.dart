@@ -14,7 +14,7 @@ class TopRestaurants extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList.separated(
-      itemCount: model?.length,
+      itemCount: model?.length ?? 0,
       itemBuilder: (context, index) => RestaurantsCard(
         restaurant: model?[index],
         isTop: true,

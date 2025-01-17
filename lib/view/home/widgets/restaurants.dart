@@ -14,7 +14,7 @@ class Restaurants extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList.separated(
-      itemCount: 10,
+      itemCount: model?.length ?? 0,
       itemBuilder: (context, index) => RestaurantsCard(
         restaurant: model?[index],
       ),
