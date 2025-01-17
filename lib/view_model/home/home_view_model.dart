@@ -29,6 +29,7 @@ class HomeViewModel with ChangeNotifier {
 
   Future<void> getAllRestaurants({bool? needLoad}) async {
     whenLoad(needLoad ?? true);
+    error = false;
     try {
       final response = await homeRepository.getAllRestaurants();
       _restaurantsResponse = ApiResponse.loaded(response);
@@ -41,6 +42,7 @@ class HomeViewModel with ChangeNotifier {
 
   Future<void> getTopRestaurants({bool? needLoad}) async {
     whenLoad(needLoad ?? true);
+    error = false;
     try {
       final response = await homeRepository.getTopRestaurants();
       _topRestaurantsResponse = ApiResponse.loaded(response);
@@ -51,9 +53,9 @@ class HomeViewModel with ChangeNotifier {
     whenLoad(false);
   }
 
-  Future<void> refresh() async {
-    await getAllRestaurants(needLoad: false);
-    await getTopRestaurants(needLoad: false);
+  Future<void> refresh({bool needLoad = true}) async {
+    await getAllRestaurants(needLoad: needLoad);
+    await getTopRestaurants(needLoad: needLoad);
   }
 
   void onRestaurantTap(BuildContext context, int restaurantId) {

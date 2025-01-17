@@ -16,7 +16,7 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       backgroundColor: AppColors.white,
-      onRefresh: () async => value.refresh(),
+      onRefresh: () async => value.refresh(needLoad: false),
       child: CustomScrollView(
         slivers: [
           const SliverToBoxAdapter(child: BannerCard()),

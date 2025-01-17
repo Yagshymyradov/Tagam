@@ -15,8 +15,11 @@ class Restaurants extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverList.separated(
       itemCount: model?.length ?? 0,
-      itemBuilder: (context, index) => RestaurantsCard(
-        restaurant: model?[index],
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: RestaurantsCard(
+          restaurant: model?[index],
+        ),
       ),
       separatorBuilder: (context, index) => const SizedBox(height: 20),
     );

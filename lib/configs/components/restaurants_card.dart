@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -42,14 +44,14 @@ extension RestaurantStatusExtension on RestaurantStatus {
 
 class RestaurantsCard extends StatelessWidget {
   final RestaurantsModel? restaurant;
-  final RestaurantStatus status;
+  final int? topPlace;
   final bool isTop;
 
   const RestaurantsCard({
     super.key,
     this.isTop = false,
     this.restaurant,
-    this.status = RestaurantStatus.open,
+    this.topPlace,
   });
 
   @override
@@ -118,11 +120,11 @@ class RestaurantsCard extends StatelessWidget {
                           Stack(
                             children: [
                               SvgPicture.asset(Assets.topSticker),
-                              const Positioned.fill(
+                              Positioned.fill(
                                 child: Center(
                                   child: Text(
-                                    '1',
-                                    style: TextStyle(
+                                    topPlace.toString(),
+                                    style: const TextStyle(
                                       fontSize: 24,
                                       color: AppColors.white,
                                       fontWeight: FontWeight.w400,
@@ -166,52 +168,70 @@ class RestaurantsCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Soltan restoran',
+                    restaurant?.name ?? '',
                     style: textTheme.headlineLarge,
                   ),
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: status.backgroundColor,
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: const [BoxShadow(blurRadius: 20)],
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                      child: Text(
-                        status.name,
-                        style: textTheme.labelMedium?.copyWith(
-                          color: status.color,
-                        ),
-                      ),
-                    ),
-                  ),
+                  OpenCloseCard(isOpenNow: restaurant?.isOpenNow ?? false),
                 ],
               ),
             ),
             const SizedBox(height: 14),
-            const SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 12),
+            SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               scrollDirection: Axis.horizontal,
               child: Row(
                 spacing: 8,
                 children: [
                   SmallBlurCard(
                     icon: Assets.spoonAndFork,
-                    title: '36 food',
+                    title: '${restaurant?.dishCount} food',
                   ),
                   SmallBlurCard(
                     icon: Assets.track,
-                    title: 'Free',
+                    title: '${restaurant?.deliveryFee ?? 0} TMT',
                   ),
                   SmallBlurCard(
                     icon: Assets.clock,
-                    title: '09:00 - 22:00',
+                    title: restaurant?.workingTime ?? '',
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 12),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class OpenCloseCard extends StatelessWidget {
+  final bool isOpenNow;
+
+  const OpenCloseCard({
+    super.key,
+    required this.isOpenNow,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final status = isOpenNow ? RestaurantStatus.open : RestaurantStatus.close;
+    final textTheme = Theme.of(context).textTheme;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+        child: ColoredBox(
+          color: status.backgroundColor,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            child: Text(
+              status.name,
+              style: textTheme.labelMedium?.copyWith(
+                color: status.color,
+              ),
+            ),
+          ),
         ),
       ),
     );
