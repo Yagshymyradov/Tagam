@@ -47,7 +47,6 @@ class _DifferencesCardsItem extends StatelessWidget {
   final List<String> differences;
 
   const _DifferencesCardsItem({
-    super.key,
     required this.title,
     required this.differences,
   });
