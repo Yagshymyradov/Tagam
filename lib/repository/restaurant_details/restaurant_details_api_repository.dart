@@ -15,4 +15,14 @@ class RestaurantDetailsApiRepository implements RestaurantDetailsRepository {
       mapper: (data) => RestaurantsModel.fromJson(data as Map<String, dynamic>),
     );
   }
+
+  @override
+  Future<List<RestaurantMenusModel>> getRestaurantMenus(int restaurantId) async {
+    return httpClient.get(
+      AppUrl.restaurantMenus(restaurantId),
+      mapper: (data) => (data as List<dynamic>)
+          .map((e) => RestaurantMenusModel.fromJson(e as Map<String, dynamic>))
+          .toList(growable: false),
+    );
+  }
 }

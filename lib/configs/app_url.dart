@@ -3,5 +3,7 @@ abstract final class AppUrl {
   static const allRestaurants = '$baseUrl/restaurants';
   static const topRestaurants = '$baseUrl/restaurants?=true';
 
+  static String restaurantMenus(int restaurantId) => '$baseUrl/restaurants/$restaurantId/menus';
+
   static String restaurantDetails(int restaurantId) => '$baseUrl/restaurants/$restaurantId';
 }
