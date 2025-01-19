@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../configs/assets.dart';
 import '../../../configs/theme/app_colors.dart';
-import '../../../model/model.dart';
+import '../../../view_model/view_model.dart';
 import 'widgets.dart';
 
 class DetailsHeader extends StatelessWidget {
-  final RestaurantsModel? data;
-
-  const DetailsHeader({
-    super.key,
-    this.data,
-  });
+  const DetailsHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final data = context.read<RestaurantDetailsViewModel>().detailsResponseState.data;
     final textTheme = Theme.of(context).textTheme;
     return Stack(
       fit: StackFit.expand,
@@ -41,38 +38,45 @@ class DetailsHeader extends StatelessWidget {
         ),
         Positioned(
           bottom: 0,
-          left: 16,
-          right: 16,
+          left: 0,
+          right: 0,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                data?.name ?? '',
-                style: textTheme.displayMedium,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  data?.name ?? '',
+                  style: textTheme.displayMedium,
+                ),
               ),
               const SizedBox(height: 24),
-              const Row(
-                children: [
-                  BlurCard(
-                    icon: Assets.track,
-                    title: 'Free',
-                  ),
-                  SizedBox(width: 8),
-                  BlurCard(
-                    icon: Assets.clock,
-                    title: '20 min',
-                  ),
-                  SizedBox(width: 8),
-                  BlurCard(
-                    icon: Assets.spoonAndFork,
-                    title: '36 food',
-                  ),
-                ],
+              SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  spacing: 8,
+                  children: [
+                    BlurCard(
+                      icon: Assets.track,
+                      title: 'Delivery',
+                      subTitle: '${data?.deliveryFee ?? 0} TMT',
+                    ),
+                    BlurCard(
+                      icon: Assets.spoonAndFork,
+                      title: 'Dishes',
+                      subTitle: '${data?.dishCount} food',
+                    ),
+                    BlurCard(
+                      icon: Assets.clock,
+                      title: 'Work time',
+                      subTitle: data?.workingTime ?? '',
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 24),
-              Divider(
-                color: AppColors.white.withValues(alpha: 0.14),
-              ),
+              Divider(color: AppColors.white.withValues(alpha: 0.14)),
             ],
           ),
         ),

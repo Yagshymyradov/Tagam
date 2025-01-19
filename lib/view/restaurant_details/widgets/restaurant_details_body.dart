@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../model/model.dart';
 import 'widgets.dart';
 
 class RestaurantDetailsBody extends StatefulWidget {
-  final RestaurantsModel? data;
 
-  const RestaurantDetailsBody({super.key, required this.data});
+  const RestaurantDetailsBody({super.key});
 
   @override
   State<RestaurantDetailsBody> createState() => _RestaurantDetailsBodyState();
@@ -30,7 +28,7 @@ class _RestaurantDetailsBodyState extends State<RestaurantDetailsBody> {
         body: NestedScrollView(
           controller: controller,
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
-            RestaurantAppBar(data: widget.data),
+            const RestaurantAppBar(),
           ],
           body: AnimatedPadding(
             padding: EdgeInsets.only(top: position ? 55 : 20),

@@ -19,14 +19,17 @@ RestaurantsModel _$RestaurantsModelFromJson(Map<String, dynamic> json) =>
       phoneNumbers: (json['phoneNumbers'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      socialMedia: (json['socialMedia'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
+      instagram: json['instagram'] as String?,
+      tiktok: json['tiktok'] as String?,
+      imo: json['imo'] as String?,
+      lat: json['lat'] as String,
+      lng: json['lng'] as String,
       workingTime: json['workingTime'] as String,
       isOpenNow: json['isOpenNow'] as bool,
       createdAt: json['createdAt'] as String,
       updatedAt: json['updatedAt'] as String,
       dishCount: (json['dishCount'] as num).toInt(),
+      isLiked: json['isLiked'] as bool,
     );
 
 Map<String, dynamic> _$RestaurantsModelToJson(RestaurantsModel instance) =>
@@ -40,10 +43,33 @@ Map<String, dynamic> _$RestaurantsModelToJson(RestaurantsModel instance) =>
       'hasDelivery': instance.hasDelivery,
       'deliveryFee': instance.deliveryFee,
       'phoneNumbers': instance.phoneNumbers,
-      'socialMedia': instance.socialMedia,
+      'instagram': instance.instagram,
+      'tiktok': instance.tiktok,
+      'imo': instance.imo,
+      'lat': instance.lat,
+      'lng': instance.lng,
       'workingTime': instance.workingTime,
       'isOpenNow': instance.isOpenNow,
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
       'dishCount': instance.dishCount,
+      'isLiked': instance.isLiked,
+    };
+
+RestaurantMenusModel _$RestaurantMenusModelFromJson(
+        Map<String, dynamic> json) =>
+    RestaurantMenusModel(
+      id: (json['id'] as num).toInt(),
+      name: json['name'] as String,
+      description: json['description'] as String,
+      image: json['image'] as String,
+    );
+
+Map<String, dynamic> _$RestaurantMenusModelToJson(
+        RestaurantMenusModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'description': instance.description,
+      'image': instance.image,
     };

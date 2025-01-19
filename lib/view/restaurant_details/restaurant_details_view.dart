@@ -1,9 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../configs/components/blurred_icon_button.dart';
-import '../../configs/theme/app_colors.dart';
 import '../../data/api_response.dart';
 import '../../main.dart';
 import '../../view_model/view_model.dart';
@@ -25,11 +21,11 @@ class RestaurantDetailsView extends StatelessWidget {
       )..getRestaurantDetails(restaurantId),
       child: Consumer<RestaurantDetailsViewModel>(
         builder: (context, value, child) {
-          switch (value.responseState.status) {
+          switch (value.detailsResponseState.status) {
             case Status.loaded:
-              return RestaurantDetailsBody(data: value.responseState.data);
+              return const RestaurantDetailsBody();
             case Status.error:
-              return Text(value.responseState.message.toString());
+              return Text(value.detailsResponseState.message.toString());
             case Status.loading:
               return const Center(child: CircularProgressIndicator());
             default:

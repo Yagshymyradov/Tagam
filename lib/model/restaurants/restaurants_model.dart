@@ -13,12 +13,17 @@ class RestaurantsModel {
   final bool hasDelivery;
   final int deliveryFee;
   final List<String> phoneNumbers;
-  final Map<String, String>? socialMedia;
+  final String? instagram;
+  final String? tiktok;
+  final String? imo;
+  final String lat;
+  final String lng;
   final String workingTime;
   final bool isOpenNow;
   final String createdAt;
   final String updatedAt;
   final int dishCount;
+  final bool isLiked;
 
   RestaurantsModel({
     required this.id,
@@ -30,13 +35,36 @@ class RestaurantsModel {
     required this.hasDelivery,
     required this.deliveryFee,
     required this.phoneNumbers,
-    this.socialMedia,
+    required this.instagram,
+    required this.tiktok,
+    required this.imo,
+    required this.lat,
+    required this.lng,
     required this.workingTime,
     required this.isOpenNow,
     required this.createdAt,
     required this.updatedAt,
     required this.dishCount,
+    required this.isLiked,
   });
 
   factory RestaurantsModel.fromJson(Map<String, dynamic> json) => _$RestaurantsModelFromJson(json);
+}
+
+@JsonSerializable()
+class RestaurantMenusModel {
+  final int id;
+  final String name;
+  final String description;
+  final String image;
+
+  RestaurantMenusModel({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.image,
+  });
+
+  factory RestaurantMenusModel.fromJson(Map<String, dynamic> json) =>
+      _$RestaurantMenusModelFromJson(json);
 }

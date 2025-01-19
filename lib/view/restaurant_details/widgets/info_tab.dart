@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../configs/components/components.dart';
+import '../../../view_model/view_model.dart';
 import 'widgets.dart';
 
 class InfoTab extends StatelessWidget {
@@ -8,19 +10,22 @@ class InfoTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
+    final data = context.read<RestaurantDetailsViewModel>().detailsResponseState.data;
+    return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
-          child: DescriptionCard(
-            title: 'About the place',
-            text:
-                'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: DescriptionCard(
+              title: 'About the place',
+              text: data?.description ?? '',
+            ),
           ),
         ),
-        SliverToBoxAdapter(child: SizedBox(height: 8)),
-        SliverToBoxAdapter(child: RestaurantDifferencesCard()),
-        SliverToBoxAdapter(child: SizedBox(height: 8)),
-        SliverToBoxAdapter(child: RestaurantContactInfo()),
+        const SliverToBoxAdapter(child: SizedBox(height: 8)),
+        const SliverToBoxAdapter(child: RestaurantDifferencesCard()),
+        const SliverToBoxAdapter(child: SizedBox(height: 8)),
+        const SliverToBoxAdapter(child: RestaurantContactInfo()),
       ],
     );
   }

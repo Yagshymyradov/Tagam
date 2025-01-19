@@ -95,10 +95,13 @@ class RestaurantsCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     right: 8,
                     top: 8,
-                    child: FavoriteButton(),
+                    child: FavoriteButton(
+                      onTap: (){},
+                      isFavorite: restaurant?.isLiked ?? false,
+                    ),
                   ),
                   Positioned(
                     top: isTop == true ? 8 : 12,

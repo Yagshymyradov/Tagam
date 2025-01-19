@@ -9,30 +9,33 @@ class RestaurantDifferencesCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: colorScheme.primaryContainer,
-      ),
-      child: const Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          spacing: 10,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _DifferencesCardsItem(
-              title: 'Sandwich',
-              differences: ['Sandwich', 'Fish', 'Burger', 'Pizza'],
-            ),
-            _DifferencesCardsItem(
-              title: 'Kitchen',
-              differences: ['Turkish', 'French'],
-            ),
-            _DifferencesCardsItem(
-              title: 'Peculiarities',
-              differences: ['Veranda'],
-            ),
-          ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: colorScheme.primaryContainer,
+        ),
+        child: const Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            spacing: 10,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _DifferencesCardsItem(
+                title: 'Sandwich',
+                differences: ['Sandwich', 'Fish', 'Burger', 'Pizza'],
+              ),
+              _DifferencesCardsItem(
+                title: 'Kitchen',
+                differences: ['Turkish', 'French'],
+              ),
+              _DifferencesCardsItem(
+                title: 'Peculiarities',
+                differences: ['Veranda'],
+              ),
+            ],
+          ),
         ),
       ),
     );

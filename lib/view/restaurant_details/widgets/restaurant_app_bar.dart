@@ -3,13 +3,11 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../configs/assets.dart';
 import '../../../configs/components/components.dart';
-import '../../../model/model.dart';
 import 'details_header.dart';
 
 class RestaurantAppBar extends StatelessWidget {
-  final RestaurantsModel? data;
 
-  const RestaurantAppBar({super.key, this.data});
+  const RestaurantAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +30,7 @@ class RestaurantAppBar extends StatelessWidget {
         ),
         const SizedBox(width: 10),
       ],
-      flexibleSpace: DetailsHeader(data: data),
+      flexibleSpace: const DetailsHeader(),
     );
   }
 }

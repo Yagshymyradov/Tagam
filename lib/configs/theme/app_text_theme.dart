@@ -67,9 +67,10 @@ final class AppTextTheme {
       fontWeight: FontWeight.w700,
     ),
     displayMedium: TextStyle(
+      fontFamily: 'ObjectSans',
       fontSize: 36,
       color: AppColors.white,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w900,
     ),
     displaySmall: TextStyle(
       fontSize: 30,

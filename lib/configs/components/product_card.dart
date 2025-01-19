@@ -42,6 +42,7 @@ class ProductCard extends StatelessWidget {
                   right: 12,
                   top: 12,
                   child: FavoriteButton(
+                    isFavorite: false,
                     height: 32,
                     blur: 20,
                     colorOpacity: 0.12,
