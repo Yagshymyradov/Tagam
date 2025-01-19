@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../data/api_response.dart';
 import '../../model/model.dart';
@@ -22,15 +23,21 @@ class RestaurantDetailsViewModel with ChangeNotifier {
     notifyListeners();
     try {
       final response = await restaurantDetailsRepository.getRestaurantDetails(restaurantId);
-      _responseState = ApiResponse.loaded(response);
       _detailsResponseState = ApiResponse.loaded(response);
     } catch (e) {
       _detailsResponseState = ApiResponse.error(e.toString());
     }
     notifyListeners();
   }
+
+  Future<void> getRestaurantMenus(int restaurantId) async {
+    _menusResponseState = ApiResponse.loading();
+    notifyListeners();
+    try {
+      final response = await restaurantDetailsRepository.getRestaurantMenus(restaurantId);
+      _menusResponseState = ApiResponse.loaded(response);
     } catch (e) {
-      _responseState = ApiResponse.error(e.toString());
+      _menusResponseState = ApiResponse.error(e.toString());
     }
     notifyListeners();
   }
