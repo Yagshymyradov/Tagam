@@ -10,7 +10,7 @@ class MainScreenViewModel extends ChangeNotifier {
   int get currentScreen => _currentScreen;
 
   final List<Widget> pages = [
-    const Text('data'),
+    const HomeView(),
     const CategoryView(),
     const Text('Cashback Prize'),
     const SizedBox(),

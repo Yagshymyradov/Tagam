@@ -41,4 +41,12 @@ class RestaurantDetailsViewModel with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  Future<void> makePhoneCall(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    await launchUrl(launchUri);
+  }
 }
