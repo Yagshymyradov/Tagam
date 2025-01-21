@@ -11,22 +11,28 @@ class RestaurantDetailsBody extends StatefulWidget {
 }
 
 class _RestaurantDetailsBodyState extends State<RestaurantDetailsBody> {
-  final controller = ScrollController();
+  final _controller = ScrollController();
 
   @override
   void initState() {
-    controller.addListener(() => setState(() {}));
+    _controller.addListener(() => setState(() {}));
     super.initState();
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final position = controller.hasClients && controller.position.pixels >= 450;
+    final position = _controller.hasClients && _controller.position.pixels >= 450;
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         body: NestedScrollView(
-          controller: controller,
+          controller: _controller,
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             const RestaurantAppBar(),
           ],

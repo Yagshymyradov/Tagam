@@ -28,6 +28,10 @@ void main() {
     () => OnboardingViewModel(prefsService: getIt()),
   );
 
+  getIt.registerLazySingleton<ProductsRepository>(
+    () => ProductApiRepository(httpClient: JsonHttpClient()),
+  );
+
   runApp(const TagamApp());
 }
 
@@ -44,6 +48,10 @@ class TagamApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => OnboardingViewModel(prefsService: getIt()),
         ),
+        ChangeNotifierProvider(
+          create: (_) => ProductsViewModel(productsRepository: getIt()),
+        ),
+        ChangeNotifierProvider(create: (_) => MainScreenViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

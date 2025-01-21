@@ -25,7 +25,7 @@ class _MenuTabState extends State<MenuTab> {
         builder: (context, value, child) {
           switch (value.menusResponseState.status) {
             case Status.loaded:
-              return const MenuTabBody();
+              return MenuTabBody(restaurantId: details.data?.id ?? 0);
             case Status.error:
               return Text(value.menusResponseState.message.toString());
             case Status.loading:

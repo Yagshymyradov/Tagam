@@ -2,9 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../../configs/assets.dart';
 import '../../../configs/theme.dart';
+import '../../../view_model/view_model.dart';
 
 class RestaurantContactInfo extends StatelessWidget {
   const RestaurantContactInfo({super.key});
@@ -12,43 +14,51 @@ class RestaurantContactInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final detailsModel = context.read<RestaurantDetailsViewModel>();
+    final data = detailsModel.detailsResponseState.data;
     final textThemeEx = context.textThemeEx;
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: colorScheme.primaryContainer,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 20,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: colorScheme.primaryContainer,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 20,
+              ),
+              child: Text(
+                'Contact informations',
+                style: textThemeEx.bodyLargeEx,
+              ),
             ),
-            child: Text(
-              'Contact informations',
-              style: textThemeEx.bodyLargeEx,
+            ...?data?.phoneNumbers.map(
+              (e) => _ContactInfoItem(
+                onTap: () => detailsModel.makePhoneCall(e),
+                title: e,
+                icon: Assets.call,
+              ),
             ),
-          ),
-          const _ContactInfoItem(
-            title: '+48 564 78 45 65',
-            icon: Assets.call,
-          ),
-          const _ContactInfoItem(
-            title: 'Ashgabat, Berkararlyk etrap,',
-            icon: Assets.location,
-          ),
-          const _ContactInfoItem(
-            title: '@lacassa_ashgabat',
-            icon: Assets.instagram,
-          ),
-          const _ContactInfoItem(
-            title: 'www.lacasa.com.tm',
-            icon: Assets.internet,
-          ),
-        ],
+            _ContactInfoItem(
+              title: data?.address ?? '',
+              icon: Assets.location,
+            ),
+            const _ContactInfoItem(
+              title: '@lacassa_ashgabat',
+              icon: Assets.instagram,
+            ),
+            const _ContactInfoItem(
+              title: 'www.lacasa.com.tm',
+              icon: Assets.internet,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -57,11 +67,12 @@ class RestaurantContactInfo extends StatelessWidget {
 class _ContactInfoItem extends StatelessWidget {
   final String title;
   final String icon;
+  final VoidCallback? onTap;
 
   const _ContactInfoItem({
-    super.key,
     required this.title,
     required this.icon,
+    this.onTap,
   });
 
   @override
@@ -74,6 +85,7 @@ class _ContactInfoItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         color: colorScheme.primaryContainer,
         child: ListTile(
+          onTap: onTap,
           contentPadding: const EdgeInsets.symmetric(horizontal: 8),
           tileColor: AppColors.white.withValues(alpha: 0.04),
           shape: RoundedRectangleBorder(
