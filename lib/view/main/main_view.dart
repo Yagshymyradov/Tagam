@@ -2,11 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../configs/assets.dart';
-import '../../configs/routes/routes.dart';
 import '../../configs/theme/app_colors.dart';
-import '../view.dart';
+import '../../view_model/main_screen/main_screen_view_model.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -16,96 +16,67 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  int _currentPage = 0;
-
-  final List<Widget> _pages = [
-    const HomeView(),
-    const CategoryView(),
-    const Text('Cashback Prize'),
-    const SizedBox(),
-    const ProfileView(),
-  ];
-
-  void onTapNavButton(int value) {
-    if (value == 3) {
-      Navigator.pushNamed(context, NavigationRouteNames.card).whenComplete(
-        () {
-          _currentPage = 0;
-          setState(() {
-            //no-op
-          });
-        },
-      );
-    }
-    _currentPage = value;
-    setState(() {
-      //no-op
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    final activeIconColor = ColorFilter.mode(
-      AppColors.white.withValues(alpha: 0.5),
-      BlendMode.srcIn,
-    );
-    return Scaffold(
-      extendBody: true,
-      body: _pages[_currentPage],
-      bottomNavigationBar: ClipRRect(
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: AppColors.black.withValues(alpha: 0.04),
+    return Consumer<MainScreenViewModel>(
+      builder: (context, value, child) => Scaffold(
+        extendBody: true,
+        body: value.pages[value.currentScreen],
+        bottomNavigationBar: ClipRRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: AppColors.black.withValues(alpha: 0.04),
+                ),
               ),
-            ),
-            child: BottomNavigationBar(
-              onTap: onTapNavButton,
-              currentIndex: _currentPage,
-              items: [
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    Assets.home,
-                    colorFilter: activeIconColor,
+              child: BottomNavigationBar(
+                onTap: (index) => value.onTapNavButton(context, index),
+                currentIndex: value.currentScreen,
+                items: [
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      Assets.home,
+                      colorFilter: value.activeIconColor,
+                    ),
+                    label: 'Home',
+                    activeIcon: SvgPicture.asset(Assets.home),
                   ),
-                  label: 'Home',
-                  activeIcon: SvgPicture.asset(Assets.home),
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    Assets.categories,
-                    colorFilter: activeIconColor,
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      Assets.categories,
+                      colorFilter: value.activeIconColor,
+                    ),
+                    label: 'Category',
+                    activeIcon: SvgPicture.asset(Assets.categories),
                   ),
-                  label: 'Category',
-                  activeIcon: SvgPicture.asset(Assets.categories),
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    Assets.cashbackPrize,
-                    colorFilter: activeIconColor,
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      Assets.cashbackPrize,
+                      colorFilter: value.activeIconColor,
+                    ),
+                    label: 'Gift',
+                    activeIcon: SvgPicture.asset(Assets.cashbackPrize),
                   ),
-                  label: 'Gift',
-                  activeIcon: SvgPicture.asset(Assets.cashbackPrize),
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    Assets.shoppingCart,
-                    colorFilter: activeIconColor,
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      Assets.shoppingCart,
+                      colorFilter: value.activeIconColor,
+                    ),
+                    label: 'Card',
+                    activeIcon: SvgPicture.asset(Assets.shoppingCart),
                   ),
-                  label: 'Card',
-                  activeIcon: SvgPicture.asset(Assets.shoppingCart),
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    Assets.profile,
-                    colorFilter: activeIconColor,
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      Assets.profile,
+                      colorFilter: value.activeIconColor,
+                    ),
+                    label: 'Profile',
+                    activeIcon: SvgPicture.asset(Assets.profile),
                   ),
-                  label: 'Profile',
-                  activeIcon: SvgPicture.asset(Assets.profile),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
