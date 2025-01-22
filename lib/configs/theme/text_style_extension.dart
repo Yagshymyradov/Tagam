@@ -123,12 +123,12 @@ final textStyleDark = TextStylesEx(
   labelLargeX: const TextStyle(
     fontSize: 16,
     color: AppColors.white,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w600,
   ),
   headlineSmallX: const TextStyle(
     fontSize: 20,
     color: AppColors.white,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w700,
   ),
   labelSmallX: TextStyle(
     fontSize: 12,

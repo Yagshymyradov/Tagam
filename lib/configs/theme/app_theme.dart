@@ -105,5 +105,12 @@ final class AppTheme {
         ),
       ),
     ),
+    checkboxTheme: CheckboxThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(50),
+      ),
+      checkColor: const WidgetStatePropertyAll(AppColors.black),
+      side: const BorderSide(color: AppColors.mediumGray),
+    ),
   );
 }
