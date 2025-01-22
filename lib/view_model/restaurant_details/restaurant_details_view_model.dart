@@ -4,11 +4,14 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../data/api_response.dart';
 import '../../model/model.dart';
 import '../../repository/repository.dart';
+import '../../view/restaurant_details/widgets/widgets.dart';
 
 class RestaurantDetailsViewModel with ChangeNotifier {
   RestaurantDetailsRepository restaurantDetailsRepository;
 
   RestaurantDetailsViewModel({required this.restaurantDetailsRepository});
+
+  SortType sortType = SortType.defaultSort;
 
   ApiResponse<RestaurantsModel> _detailsResponseState = ApiResponse.loading();
 
@@ -39,6 +42,11 @@ class RestaurantDetailsViewModel with ChangeNotifier {
     } catch (e) {
       _menusResponseState = ApiResponse.error(e.toString());
     }
+    notifyListeners();
+  }
+
+  void setSortType(SortType sortType) {
+    this.sortType = sortType;
     notifyListeners();
   }
 

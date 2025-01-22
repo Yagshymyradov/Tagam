@@ -19,12 +19,12 @@ class CustomTabBar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18),
       child: ClipRRect(
+        borderRadius: BorderRadius.circular(62),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaY: 4, sigmaX: 4),
           child: DecoratedBox(
             decoration: BoxDecoration(
               color: AppColors.white.withValues(alpha: 0.2),
-              borderRadius: BorderRadius.circular(62),
               border: Border.all(
                 color: AppColors.white.withValues(alpha: 0.06),
               ),

@@ -53,16 +53,18 @@ class RestaurantsModel {
 
 @JsonSerializable()
 class RestaurantMenusModel {
-  final int id;
-  final String name;
-  final String description;
-  final String image;
+  final int? id;
+  final String? name;
+  final String? description;
+  final String? image;
+  final String? icon;
 
   RestaurantMenusModel({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.image,
+    this.id,
+    this.name,
+    this.description,
+    this.image,
+    this.icon,
   });
 
   factory RestaurantMenusModel.fromJson(Map<String, dynamic> json) =>

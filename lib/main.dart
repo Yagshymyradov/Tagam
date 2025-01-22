@@ -51,6 +51,11 @@ class TagamApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => ProductsViewModel(productsRepository: getIt()),
         ),
+        ChangeNotifierProvider(
+          create: (_) => RestaurantDetailsViewModel(
+            restaurantDetailsRepository: getIt(),
+          ),
+        ),
         ChangeNotifierProvider(create: (_) => MainScreenViewModel()),
       ],
       child: MaterialApp(

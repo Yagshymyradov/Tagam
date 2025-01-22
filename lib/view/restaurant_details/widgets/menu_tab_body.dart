@@ -1,12 +1,16 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+import '../../../configs/assets.dart';
 import '../../../configs/components/product_card.dart';
 import '../../../configs/theme.dart';
 import '../../../data/api_response.dart';
 import '../../../main.dart';
+import '../../../model/model.dart';
 import '../../../view_model/view_model.dart';
+import 'widgets.dart';
 
 class MenuTabBody extends StatefulWidget {
   final int? restaurantId;
@@ -19,12 +23,21 @@ class MenuTabBody extends StatefulWidget {
 
 class _MenuTabBodyState extends State<MenuTabBody> with TickerProviderStateMixin {
   late final TabController _tabController;
+  List<RestaurantMenusModel>? menus;
+  int lastIndex = 2;
 
   @override
   void initState() {
     super.initState();
     final data = context.read<RestaurantDetailsViewModel>().menusResponseState.data;
-    _tabController = TabController(length: data?.length ?? 0, vsync: this);
+    menus = List.from(data ?? []);
+    menus?.insert(0, RestaurantMenusModel(icon: Assets.filter));
+    menus?.insert(0, RestaurantMenusModel(icon: Assets.sort));
+    _tabController = TabController(
+      length: menus?.length ?? 0,
+      vsync: this,
+      initialIndex: 2,
+    );
   }
 
   @override
@@ -35,8 +48,6 @@ class _MenuTabBodyState extends State<MenuTabBody> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    final detailsModel = context.watch<RestaurantDetailsViewModel>();
-    final data = detailsModel.menusResponseState.data;
     final textThemeEx = context.textThemeEx;
 
     return Column(
@@ -46,43 +57,65 @@ class _MenuTabBodyState extends State<MenuTabBody> with TickerProviderStateMixin
           controller: _tabController,
           padding: const EdgeInsets.all(16),
           indicator: const BoxDecoration(),
-          onTap: (value) => setState(() {}),
+          onTap: (value) {
+            if (value != 1 && value != 0) {
+              lastIndex = value;
+              setState(() {});
+            }
+            if (value == 0) {
+              _tabController.index = lastIndex;
+              showModalBottomSheet<void>(
+                context: context,
+                backgroundColor: Colors.transparent,
+                builder: (context) => const SortProducts(),
+              );
+            }
+            if (value == 1) {
+              _tabController.index = lastIndex;
+              showModalBottomSheet<void>(
+                context: context,
+                builder: (context) => const Column(),
+              );
+            }
+          },
           isScrollable: true,
           tabAlignment: TabAlignment.start,
           labelPadding: const EdgeInsets.only(right: 8),
-          tabs: data
-                  ?.mapIndexed(
-                    (i, e) => DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: AppColors.white.withValues(
-                          alpha: _tabController.index == i ? 1 : 0.1,
-                        ),
-                        borderRadius: BorderRadius.circular(100),
-                        border: Border.all(
-                          color: AppColors.white.withValues(alpha: 0.02),
-                        ),
+          tabs: menus?.mapIndexed(
+                (i, e) {
+                  return DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: AppColors.white.withValues(
+                        alpha: _tabController.index == i ? 1 : 0.1,
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: Text(e.name),
+                      borderRadius: BorderRadius.circular(100),
+                      border: Border.all(
+                        color: AppColors.white.withValues(alpha: 0.02),
                       ),
                     ),
-                  )
-                  .toList(growable: false) ??
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: e.icon != null
+                          ? SvgPicture.asset(e.icon ?? '', height: 24)
+                          : Text(e.name ?? ''),
+                    ),
+                  );
+                },
+              ).toList(growable: false) ??
               [],
         ),
         Expanded(
           child: TabBarView(
             physics: const NeverScrollableScrollPhysics(),
             controller: _tabController,
-            children: data?.map(
+            children: menus?.map(
                   (e) {
                     return ChangeNotifierProvider(
                       create: (context) => ProductsViewModel(
                         productsRepository: getIt(),
                       )..getProducts(
                           widget.restaurantId ?? 0,
-                          data[_tabController.index].id,
+                          menus?[_tabController.index].id ?? 0,
                         ),
                       child: Consumer<ProductsViewModel>(
                         builder: (context, value, child) {

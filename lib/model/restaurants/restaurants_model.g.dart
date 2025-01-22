@@ -59,10 +59,11 @@ Map<String, dynamic> _$RestaurantsModelToJson(RestaurantsModel instance) =>
 RestaurantMenusModel _$RestaurantMenusModelFromJson(
         Map<String, dynamic> json) =>
     RestaurantMenusModel(
-      id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      description: json['description'] as String,
-      image: json['image'] as String,
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String?,
+      description: json['description'] as String?,
+      image: json['image'] as String?,
+      icon: json['icon'] as String?,
     );
 
 Map<String, dynamic> _$RestaurantMenusModelToJson(
@@ -72,4 +73,5 @@ Map<String, dynamic> _$RestaurantMenusModelToJson(
       'name': instance.name,
       'description': instance.description,
       'image': instance.image,
+      'icon': instance.icon,
     };
