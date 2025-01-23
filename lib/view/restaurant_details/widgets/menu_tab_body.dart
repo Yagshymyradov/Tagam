@@ -24,7 +24,7 @@ class MenuTabBody extends StatefulWidget {
 class _MenuTabBodyState extends State<MenuTabBody> with TickerProviderStateMixin {
   late final TabController _tabController;
   List<RestaurantMenusModel>? menus;
-  int lastIndex = 2;
+  int lastIndex = 1;
 
   @override
   void initState() {
@@ -32,11 +32,10 @@ class _MenuTabBodyState extends State<MenuTabBody> with TickerProviderStateMixin
     final data = context.read<RestaurantDetailsViewModel>().menusResponseState.data;
     menus = List.from(data ?? []);
     menus?.insert(0, RestaurantMenusModel(icon: Assets.filter));
-    menus?.insert(0, RestaurantMenusModel(icon: Assets.sort));
     _tabController = TabController(
       length: menus?.length ?? 0,
       vsync: this,
-      initialIndex: 2,
+      initialIndex: 1,
     );
   }
 
@@ -48,6 +47,7 @@ class _MenuTabBodyState extends State<MenuTabBody> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+    final data = context.watch<RestaurantDetailsViewModel>().menusResponseState.data;
     final textThemeEx = context.textThemeEx;
 
     return Column(
@@ -58,7 +58,7 @@ class _MenuTabBodyState extends State<MenuTabBody> with TickerProviderStateMixin
           padding: const EdgeInsets.all(16),
           indicator: const BoxDecoration(),
           onTap: (value) {
-            if (value != 1 && value != 0) {
+            if (value != 0) {
               lastIndex = value;
               setState(() {});
             }
@@ -66,15 +66,10 @@ class _MenuTabBodyState extends State<MenuTabBody> with TickerProviderStateMixin
               _tabController.index = lastIndex;
               showModalBottomSheet<void>(
                 context: context,
+                isScrollControlled: true,
+                useSafeArea: true,
                 backgroundColor: Colors.transparent,
-                builder: (context) => const SortProducts(),
-              );
-            }
-            if (value == 1) {
-              _tabController.index = lastIndex;
-              showModalBottomSheet<void>(
-                context: context,
-                builder: (context) => const Column(),
+                builder: (context) => FilterProducts(menus: data),
               );
             }
           },

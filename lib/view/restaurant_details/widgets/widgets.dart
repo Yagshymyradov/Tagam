@@ -1,4 +1,6 @@
 export 'blur_card.dart';
+export 'dishes_card.dart';
+export 'filter_products.dart';
 export 'info_tab.dart';
 export 'menu_tab.dart';
 export 'menu_tab_body.dart';
@@ -6,5 +8,4 @@ export 'restaurant_app_bar.dart';
 export 'restaurant_contact_info.dart';
 export 'restaurant_details_body.dart';
 export 'restaurant_differences_card.dart';
-export 'sort_products.dart';
 export 'sort_tile.dart';

@@ -33,23 +33,33 @@ class SortTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final textThemeEx = context.textThemeEx;
     final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
     final value = context.read<RestaurantDetailsViewModel>();
     final sortType = context.select((RestaurantDetailsViewModel value) => value.sortType);
 
-    return Column(
-      spacing: 8,
-      children: SortType.values
-          .map(
-            (e) => Material(
-              child: ListTile(
+    return Material(
+      color: colorScheme.primaryContainer,
+      borderRadius: BorderRadius.circular(20),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          spacing: 8,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Filters', style: textThemeEx.headlineSmallX),
+            const SizedBox(height: 4),
+            ...SortType.values.map(
+              (e) => ListTile(
                 onTap: () => value.setSortType(e),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(14),
                 ),
-                tileColor: sortType == e ? AppColors.charlestonGreen : colorScheme.primaryContainer,
+                tileColor: sortType == e
+                    ? AppColors.charlestonGreen
+                    : AppColors.white.withValues(alpha: 0.04),
                 title: Text(
                   e.title,
-                  style: textThemeEx.labelLargeX,
+                  style: sortType == e ? textThemeEx.labelLargeX : textTheme.labelLarge,
                 ),
                 trailing: Checkbox(
                   value: sortType == e,
@@ -58,8 +68,9 @@ class SortTile extends StatelessWidget {
                 ),
               ),
             ),
-          )
-          .toList(),
+          ],
+        ),
+      ),
     );
   }
 }

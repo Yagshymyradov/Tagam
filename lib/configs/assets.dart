@@ -55,6 +55,9 @@ final class Assets {
   static const String heartFilled = '$_icons/heart-filled.svg';
   static const String sort = '$_icons/sort.svg';
   static const String close = '$_icons/close.svg';
+  static const String hot = '$_icons/hot.svg';
+  static const String sale = '$_icons/sale.svg';
+  static const String top = '$_icons/top.svg';
 
   static const String foodGroup = '$_images/food-group.png';
   static const String desertGroup = '$_images/desert-group.png';
