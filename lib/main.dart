@@ -57,6 +57,7 @@ class TagamApp extends StatelessWidget {
           ),
         ),
         ChangeNotifierProvider(create: (_) => MainScreenViewModel()),
+        ChangeNotifierProvider(create: (_) => CreateAccountViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
