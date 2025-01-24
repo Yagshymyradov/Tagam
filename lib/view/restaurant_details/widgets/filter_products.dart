@@ -119,10 +119,7 @@ class _FilterCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               spacing: 8,
               children: [
-                SvgPicture.asset(
-                  icon,
-                  height: 20,
-                ),
+                SvgPicture.asset(icon, height: 20),
                 Text(
                   title,
                   style: textThemeEx.labelLargeX,

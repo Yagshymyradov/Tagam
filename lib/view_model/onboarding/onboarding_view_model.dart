@@ -47,7 +47,7 @@ class OnboardingViewModel with ChangeNotifier {
       try {
         await prefsService.setBool(PreferencesKeys.onboardingShowed, true);
         //ignore: unawaited_futures
-        Navigator.pushReplacementNamed(context, NavigationRouteNames.mainScreen);
+        Navigator.pushReplacementNamed(context, NavigationRouteNames.chooseCity);
       } catch (e) {
         //ignore
       }

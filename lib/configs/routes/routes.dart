@@ -5,6 +5,7 @@ import '../../view/view.dart';
 abstract final class NavigationRouteNames {
   static const splash = '/';
   static const onboarding = '/onboarding';
+  static const chooseCity = '/choose_city';
   static const mainScreen = '/main_screen';
   static const home = '/home';
   static const profile = '/profile';
@@ -24,6 +25,7 @@ abstract final class Navigation {
   static final routes = <String, Widget Function(BuildContext)>{
     NavigationRouteNames.splash: (_) => const SplashView(),
     NavigationRouteNames.onboarding: (_) => const OnboardingView(),
+    NavigationRouteNames.chooseCity: (_) => const ChooseCity(),
     NavigationRouteNames.mainScreen: (_) => const MainView(),
     NavigationRouteNames.home: (_) => const HomeView(),
     NavigationRouteNames.profile: (_) => const ProfileView(),

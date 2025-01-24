@@ -2,6 +2,7 @@ export 'add_address/add_address_view.dart';
 export 'card/card_view.dart';
 export 'category/category_view.dart';
 export 'category_details/category_details_view.dart';
+export 'choose_city/choose_city.dart';
 export 'home/home_view.dart';
 export 'main/main_view.dart';
 export 'my_addresses/my_addresses_view.dart';
