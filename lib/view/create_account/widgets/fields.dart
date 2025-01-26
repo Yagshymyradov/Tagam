@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../configs/components/phone_text_field.dart';
 import '../../../configs/theme.dart';
+import '../../../view_model/view_model.dart';
 
-class Fields extends StatelessWidget {
+class Fields extends StatefulWidget {
   const Fields({super.key});
+
+  @override
+  State<Fields> createState() => _FieldsState();
+}
+
+class _FieldsState extends State<Fields> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<CreateAccountViewModel>().initPlatformState();
+  }
 
   @override
   Widget build(BuildContext context) {
