@@ -10,6 +10,7 @@ final class AppColors {
   static const goldenOlive = Color(0xFF9C854F);
   static const lightPink = Color(0xFFFF3F94);
   static const radicalRed = Color(0xFFFF3347);
+  static const cinnabar = Color(0xFFE64646);
   static const lightBlueViolet = Color(0xFFA393F5);
   static const mediumSlateBlue = Color(0xFF735CE6);
   static const screaminGreen = Color(0xFF7EF845);

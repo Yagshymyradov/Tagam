@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../configs/routes/routes.dart';
 import 'widgets/widgets.dart';
 
-class ChooseCity extends StatelessWidget {
-  const ChooseCity({super.key});
+class ChooseCityView extends StatelessWidget {
+  const ChooseCityView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,10 @@ class ChooseCity extends StatelessWidget {
               right: 16,
               bottom: 30,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Navigator.pushNamed(
+                  context,
+                  NavigationRouteNames.createAccount,
+                ),
                 child: Text(
                   'Continue',
                   style: textTheme.bodyMedium,
