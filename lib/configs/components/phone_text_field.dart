@@ -5,11 +5,17 @@ import '../extensions.dart';
 import '../theme/app_colors.dart';
 
 class PhoneTextField extends StatelessWidget {
-  const PhoneTextField({super.key});
+  final bool needBorder;
+
+  const PhoneTextField({
+    super.key,
+    this.needBorder = true,
+  });
 
   @override
   Widget build(BuildContext context) {
     final textThemeEx = context.textThemeEx;
+    final colorScheme = Theme.of(context).colorScheme;
     final borderColor = AppColors.white.withValues(alpha: 0.12);
     const fieldBorder = OutlineInputBorder(
       borderRadius: BorderRadius.horizontal(
@@ -25,41 +31,60 @@ class PhoneTextField extends StatelessWidget {
         const SizedBox(height: 8),
         Row(
           children: [
-            DecoratedBox(
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(color: borderColor, width: 0.5),
-                  left: BorderSide(color: borderColor, width: 0.5),
-                  top: BorderSide(color: borderColor, width: 0.5),
+            Stack(
+              children: [
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    border: needBorder
+                        ? Border(
+                            bottom: BorderSide(color: borderColor, width: 0.5),
+                            left: BorderSide(color: borderColor, width: 0.5),
+                            top: BorderSide(color: borderColor, width: 0.5),
+                          )
+                        : null,
+                    borderRadius: const BorderRadius.horizontal(
+                      left: Radius.circular(8),
+                    ),
+                    color: needBorder ? AppColors.charlestonGreen : colorScheme.primaryContainer,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 10.5,
+                    ),
+                    child: Text(
+                      '+993',
+                      style: textThemeEx.labelLargeX,
+                    ),
+                  ),
                 ),
-                borderRadius: const BorderRadius.horizontal(
-                  left: Radius.circular(8),
-                ),
-                color: AppColors.charlestonGreen,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10.5,
-                ),
-                child: Text(
-                  '+993',
-                  style: textThemeEx.labelLargeX,
-                ),
-              ),
+                if (!needBorder)
+                  Positioned(
+                    right: 0,
+                    top: 2,
+                    bottom: 2,
+                    child: SizedBox(
+                      width: 0.5,
+                      height: 100,
+                      child: ColoredBox(color: borderColor),
+                    ),
+                  ),
+              ],
             ),
             Expanded(
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 0.5,
-                    color: borderColor,
-                  ),
+                  border: needBorder
+                      ? Border.all(
+                          width: 0.5,
+                          color: borderColor,
+                        )
+                      : null,
                   borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(8),
                     bottomRight: Radius.circular(8),
                   ),
-                  color: AppColors.charlestonGreen,
+                  color: needBorder ? AppColors.charlestonGreen : colorScheme.primaryContainer,
                 ),
                 child: TextFormField(
                   style: textThemeEx.labelLargeX,
