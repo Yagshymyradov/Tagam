@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'configs/routes/routes.dart';
+import 'configs/show_snack_bar.dart';
 import 'configs/theme/app_theme.dart';
 import 'data/json_http_client.dart';
 import 'repository/repository.dart';
@@ -32,6 +33,10 @@ void main() {
     () => ProductApiRepository(httpClient: JsonHttpClient()),
   );
 
+  getIt.registerLazySingleton<UserRepository>(
+    () => UserApiRepository(httpClient: JsonHttpClient()),
+  );
+
   runApp(const TagamApp());
 }
 
@@ -57,13 +62,16 @@ class TagamApp extends StatelessWidget {
           ),
         ),
         ChangeNotifierProvider(create: (_) => MainScreenViewModel()),
-        ChangeNotifierProvider(create: (_) => CreateAccountViewModel()),
+        ChangeNotifierProvider(
+          create: (_) => CreateAccountViewModel(userRepository: getIt()),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.darkTheme,
         themeMode: ThemeMode.dark,
         routes: Navigation.routes,
+        scaffoldMessengerKey: scaffoldMessengerKey,
         initialRoute: NavigationRouteNames.splash,
         onGenerateRoute: Navigation.onGenerateRoute,
       ),
