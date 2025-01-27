@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'widgets/widgets.dart';
 
 class CreateAccountView extends StatelessWidget {
@@ -28,13 +27,7 @@ class CreateAccountView extends StatelessWidget {
             const SizedBox(height: 36),
             const Fields(),
             const SizedBox(height: 36),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                'Continue',
-                style: textTheme.bodyMedium,
-              ),
-            ),
+            const ContinueButton(),
           ],
         ),
       ),
