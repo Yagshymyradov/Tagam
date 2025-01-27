@@ -6,17 +6,24 @@ import '../theme/app_colors.dart';
 
 class PhoneTextField extends StatelessWidget {
   final bool needBorder;
+  final bool isPhoneNumberError;
+  final String? Function(String?)? validator;
+  final TextEditingController? controller;
 
   const PhoneTextField({
     super.key,
     this.needBorder = true,
+    this.isPhoneNumberError = false,
+    this.validator,
+    this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     final textThemeEx = context.textThemeEx;
     final colorScheme = Theme.of(context).colorScheme;
-    final borderColor = AppColors.white.withValues(alpha: 0.12);
+    final borderColor =
+        isPhoneNumberError ? colorScheme.errorContainer : AppColors.white.withValues(alpha: 0.12);
     const fieldBorder = OutlineInputBorder(
       borderRadius: BorderRadius.horizontal(
         right: Radius.circular(8),
@@ -41,7 +48,12 @@ class PhoneTextField extends StatelessWidget {
                             left: BorderSide(color: borderColor, width: 0.5),
                             top: BorderSide(color: borderColor, width: 0.5),
                           )
-                        : null,
+                        : !needBorder && isPhoneNumberError
+                            ? Border.all(
+                                width: 0.5,
+                                color: borderColor,
+                              )
+                            : null,
                     borderRadius: const BorderRadius.horizontal(
                       left: Radius.circular(8),
                     ),
@@ -58,7 +70,7 @@ class PhoneTextField extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (!needBorder)
+                if (!needBorder && !isPhoneNumberError)
                   Positioned(
                     right: 0,
                     top: 2,
@@ -79,7 +91,12 @@ class PhoneTextField extends StatelessWidget {
                           width: 0.5,
                           color: borderColor,
                         )
-                      : null,
+                      : !needBorder && isPhoneNumberError
+                          ? Border.all(
+                              width: 0.5,
+                              color: borderColor,
+                            )
+                          : null,
                   borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(8),
                     bottomRight: Radius.circular(8),
@@ -87,6 +104,7 @@ class PhoneTextField extends StatelessWidget {
                   color: needBorder ? AppColors.charlestonGreen : colorScheme.primaryContainer,
                 ),
                 child: TextFormField(
+                  controller: controller,
                   style: textThemeEx.labelLargeX,
                   cursorColor: AppColors.white,
                   cursorHeight: 15,
@@ -95,6 +113,7 @@ class PhoneTextField extends StatelessWidget {
                     fillColor: Colors.transparent,
                     enabledBorder: fieldBorder,
                     focusedBorder: fieldBorder,
+                    errorBorder: fieldBorder,
                     isDense: true,
                     hintText: '(**) **-**-**',
                   ),
@@ -109,6 +128,14 @@ class PhoneTextField extends StatelessWidget {
             ),
           ],
         ),
+        if (isPhoneNumberError)
+          Padding(
+            padding: const EdgeInsets.only(top: 4, left: 13),
+            child: Text(
+              validator!(controller?.text) ?? '',
+              style: textThemeEx.errorText,
+            ),
+          ),
       ],
     );
   }

@@ -22,6 +22,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
   final TextStyle? buttonText;
   final TextStyle? errorButtonText;
   final TextStyle? headlineMediumEx;
+  final TextStyle? errorText;
 
   const TextStylesEx({
     required this.labelLargeX,
@@ -43,6 +44,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     required this.buttonText,
     required this.errorButtonText,
     required this.headlineMediumEx,
+    required this.errorText,
   });
 
   @override
@@ -66,6 +68,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     TextStyle? buttonText,
     TextStyle? errorButtonText,
     TextStyle? headlineMediumEx,
+    TextStyle? errorText,
   }) {
     return TextStylesEx(
       labelLargeX: labelLargeX ?? this.labelLargeX,
@@ -87,6 +90,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       buttonText: buttonText ?? this.buttonText,
       errorButtonText: errorButtonText ?? this.errorButtonText,
       headlineMediumEx: headlineMediumEx ?? this.headlineMediumEx,
+      errorText: errorText ?? this.errorText,
     );
   }
 
@@ -115,6 +119,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       buttonText: buttonText,
       errorButtonText: errorButtonText,
       headlineMediumEx: headlineMediumEx,
+      errorText: errorText,
     );
   }
 }
@@ -221,6 +226,11 @@ final textStyleDark = TextStylesEx(
   errorButtonText: const TextStyle(
     fontSize: 18,
     color: AppColors.radicalRed,
+    fontWeight: FontWeight.w400,
+  ),
+  errorText: const TextStyle(
+    fontSize: 12,
+    color: AppColors.cinnabar,
     fontWeight: FontWeight.w400,
   ),
 );

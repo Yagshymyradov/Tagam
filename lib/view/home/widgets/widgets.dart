@@ -1,4 +1,4 @@
-export 'package:tagam/configs/components/indicatore.dart';
+export 'package:tagam/configs/components/indicators.dart';
 
 export 'banner_card.dart';
 export 'home_app_bar.dart';

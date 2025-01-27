@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../../view/view.dart';
 
 abstract final class NavigationRouteNames {
-  static const splash = '/';
+  static const splash = '/splash';
   static const onboarding = '/onboarding';
   static const chooseCity = '/choose_city';
   static const createAccount = '/create_account';
-  static const mainScreen = '/main_screen';
+  static const mainScreen = '/';
   static const home = '/home';
   static const profile = '/profile';
   static const category = '/category';
