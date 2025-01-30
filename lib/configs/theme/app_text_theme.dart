@@ -17,13 +17,13 @@ final class AppTextTheme {
       fontWeight: FontWeight.w500,
     ),
     titleSmall: TextStyle(
-      color: AppColors.white,
       fontSize: 14,
+      color: AppColors.white,
       fontWeight: FontWeight.w600,
     ),
     labelLarge: TextStyle(
       fontSize: 16,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w500,
       color: AppColors.mediumGray,
     ),
     labelMedium: TextStyle(
@@ -44,7 +44,7 @@ final class AppTextTheme {
     bodyMedium: TextStyle(
       fontSize: 16,
       color: AppColors.midnightGrape,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w700,
     ),
     bodySmall: TextStyle(
       fontSize: 10,

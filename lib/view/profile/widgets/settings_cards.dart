@@ -3,18 +3,27 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../configs/assets.dart';
 import '../../../configs/theme.dart';
+import 'choose_language.dart';
 
 class SettingsCards extends StatelessWidget {
   const SettingsCards({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       spacing: 8,
       children: [
-        SettingsTile(title: 'Dil', icon: Assets.language, isLanguage: true),
-        SettingsTile(title: 'Habarlaşmak', icon: Assets.message),
-        SettingsTile(title: 'Policy Provicy', icon: Assets.checkShield),
+        SettingsTile(
+          title: 'Dil',
+          icon: Assets.language,
+          isLanguage: true,
+          onTap: () => showDialog<void>(
+            context: context,
+            builder: (context) => const AlertLanguageDialog(),
+          ),
+        ),
+        const SettingsTile(title: 'Habarlaşmak', icon: Assets.message),
+        const SettingsTile(title: 'Policy Provicy', icon: Assets.checkShield),
       ],
     );
   }
@@ -24,12 +33,14 @@ class SettingsTile extends StatelessWidget {
   final String title;
   final String icon;
   final bool? isLanguage;
+  final VoidCallback? onTap;
 
   const SettingsTile({
     super.key,
     required this.title,
     required this.icon,
     this.isLanguage,
+    this.onTap,
   });
 
   @override
@@ -37,6 +48,7 @@ class SettingsTile extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return ListTile(
+      onTap: onTap,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(14),
       ),

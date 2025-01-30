@@ -17,6 +17,7 @@ final class AppColors {
   static const kellyGreen = Color(0xFF48C600);
   static const darkGray = Color(0XFF191919);
   static const charlestonGreen = Color(0XFF292929);
+  static const raisinBlack = Color(0XFF222222);
   static const manatee = Color(0XFF969A9F);
   static const midnightGrape = Color(0xFF0F0B0F);
   static const black = Color(0xFF000000);
