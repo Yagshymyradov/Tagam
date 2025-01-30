@@ -8,6 +8,7 @@ import 'configs/show_snack_bar.dart';
 import 'configs/theme/app_theme.dart';
 import 'data/json_http_client.dart';
 import 'repository/repository.dart';
+import 'service/auth_service/auth_service.dart';
 import 'service/preferences.dart';
 import 'view_model/view_model.dart';
 
@@ -25,6 +26,7 @@ void main() {
   getIt.registerSingletonAsync<AppPrefsService>(
     () async => AppPrefsService(await SharedPreferences.getInstance()),
   );
+
   getIt.registerLazySingleton<OnboardingViewModel>(
     () => OnboardingViewModel(prefsService: getIt()),
   );
@@ -35,6 +37,10 @@ void main() {
 
   getIt.registerLazySingleton<UserRepository>(
     () => UserApiRepository(httpClient: JsonHttpClient()),
+  );
+
+  getIt.registerLazySingleton<AuthService>(
+    () => AuthService(prefsService: getIt()),
   );
 
   runApp(const TagamApp());
@@ -65,6 +71,7 @@ class TagamApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => CreateAccountViewModel(userRepository: getIt()),
         ),
+        ChangeNotifierProvider(create: (_) => UserViewModel(prefsService: getIt())),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

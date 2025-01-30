@@ -6,8 +6,10 @@ import 'package:flutter/services.dart';
 
 import '../../configs/routes/routes.dart';
 import '../../configs/show_snack_bar.dart';
+import '../../main.dart';
 import '../../model/model.dart';
 import '../../repository/repository.dart';
+import '../../service/auth_service/auth_service.dart';
 import '../../view/choose_city/widgets/widgets.dart';
 
 class CreateAccountViewModel with ChangeNotifier {
@@ -15,6 +17,7 @@ class CreateAccountViewModel with ChangeNotifier {
 
   CreateAccountViewModel({required this.userRepository});
 
+  final authService = getIt<AuthService>();
   final formKey = GlobalKey<FormState>();
   final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
   final TextEditingController nameController = TextEditingController();
@@ -55,7 +58,7 @@ class CreateAccountViewModel with ChangeNotifier {
     isLoading = true;
     notifyListeners();
     try {
-      await userRepository.register(
+      final result = await userRepository.register(
         CreateUsers(
           name: nameController.text.trim(),
           phoneNumber: phoneController.text.trim(),
@@ -63,6 +66,7 @@ class CreateAccountViewModel with ChangeNotifier {
           deviceId: _deviceId,
         ),
       );
+      await authService.signIn(result);
       // ignore: unawaited_futures
       Navigator.pushNamedAndRemoveUntil(
         context,
