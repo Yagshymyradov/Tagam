@@ -39,6 +39,10 @@ void main() {
     () => UserApiRepository(httpClient: JsonHttpClient()),
   );
 
+  getIt.registerLazySingleton<UserViewModel>(
+    () => UserViewModel(prefsService: getIt()),
+  );
+
   getIt.registerLazySingleton<AuthService>(
     () => AuthService(prefsService: getIt()),
   );

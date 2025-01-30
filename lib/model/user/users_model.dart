@@ -12,6 +12,18 @@ class UsersModel {
     required this.token,
   });
 
+  UsersModel copyWith({
+    User? user,
+    String? token,
+  }) {
+    return UsersModel(
+      user: user ?? this.user,
+      token: token ?? this.token,
+    );
+  }
+
+  Map<String, dynamic> toJson() => _$UsersModelToJson(this);
+
   factory UsersModel.fromJson(Map<String, dynamic> json) => _$UsersModelFromJson(json);
 }
 
@@ -35,8 +47,29 @@ class User {
     this.updatedAt,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  User copyWith({
+    int? id,
+    String? name,
+    String? phoneNumber,
+    String? city,
+    String? deviceId,
+    String? createdAt,
+    String? updatedAt,
+  }) {
+    return User(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      city: city ?? this.city,
+      deviceId: deviceId ?? this.deviceId,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
+  }
 
+  Map<String, dynamic> toJson() => _$UserToJson(this);
+
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }
 
 @JsonSerializable()
