@@ -10,7 +10,8 @@ abstract final class NavigationRouteNames {
   static const mainScreen = '/';
   static const home = '/home';
   static const profile = '/profile';
-  static const category = '/category';
+  //NOTE: for future implementation
+  // static const category = '/category';
   static const search = '/search';
   static const restaurantDetails = '/restaurants_details';
   static const productDetails = '/product_details';
@@ -31,7 +32,8 @@ abstract final class Navigation {
     NavigationRouteNames.mainScreen: (_) => const MainView(),
     NavigationRouteNames.home: (_) => const HomeView(),
     NavigationRouteNames.profile: (_) => const ProfileView(),
-    NavigationRouteNames.category: (_) => const CategoryView(),
+    //NOTE: for future implementation
+    // NavigationRouteNames.category: (_) => const CategoryView(),
     NavigationRouteNames.search: (_) => const SearchView(),
     NavigationRouteNames.productDetails: (_) => const ProductDetailsView(),
     NavigationRouteNames.categoryDetails: (_) => const CategoryDetailsView(),

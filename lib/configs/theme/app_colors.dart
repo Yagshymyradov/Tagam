@@ -8,6 +8,7 @@ final class AppColors {
   static const mediumGray = Color(0xFFA3A3A3);
   static const romanSilver = Color(0xFF818C99);
   static const goldenOlive = Color(0xFF9C854F);
+  static const oliveGold = Color(0xFFC5A761);
   static const lightPink = Color(0xFFFF3F94);
   static const radicalRed = Color(0xFFFF3347);
   static const cinnabar = Color(0xFFE64646);

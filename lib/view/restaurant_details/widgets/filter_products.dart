@@ -16,6 +16,8 @@ class FilterProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textThemeEx = context.textThemeEx;
+    final textTheme = Theme.of(context).textTheme;
+
     return DraggableScrollableSheet(
       expand: false,
       snap: true,
@@ -84,6 +86,16 @@ class FilterProducts extends StatelessWidget {
                   DishesCard(menus: menus),
                   const SizedBox(height: 8),
                   const SortTile(),
+                  const SizedBox(height: 8),
+                  ElevatedButton.icon(
+                    onPressed: () => Navigator.pop(context),
+                    icon: SvgPicture.asset(Assets.checkCircle),
+                    label: Text(
+                      'Apply',
+                      style: textTheme.bodyMedium,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                 ],
               ),
             ),

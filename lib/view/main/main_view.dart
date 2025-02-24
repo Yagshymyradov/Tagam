@@ -43,14 +43,15 @@ class _MainViewState extends State<MainView> {
                     label: 'Home',
                     activeIcon: SvgPicture.asset(Assets.home),
                   ),
-                  BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      Assets.categories,
-                      colorFilter: value.activeIconColor,
-                    ),
-                    label: 'Category',
-                    activeIcon: SvgPicture.asset(Assets.categories),
-                  ),
+                  //NOTE: for future implementation
+                  // BottomNavigationBarItem(
+                  //   icon: SvgPicture.asset(
+                  //     Assets.categories,
+                  //     colorFilter: value.activeIconColor,
+                  //   ),
+                  //   label: 'Category',
+                  //   activeIcon: SvgPicture.asset(Assets.categories),
+                  // ),
                   BottomNavigationBarItem(
                     icon: SvgPicture.asset(
                       Assets.cashbackPrize,

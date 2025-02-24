@@ -57,7 +57,13 @@ class CityTile extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(9),
-                  child: SvgPicture.asset(Assets.location),
+                  child: SvgPicture.asset(
+                    Assets.location,
+                    colorFilter: const ColorFilter.mode(
+                      AppColors.oliveGold,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ),
               ),
               contentPadding: const EdgeInsets.symmetric(horizontal: 8),

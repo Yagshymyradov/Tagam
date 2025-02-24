@@ -11,7 +11,8 @@ class MainScreenViewModel extends ChangeNotifier {
 
   final List<Widget> pages = [
     const HomeView(),
-    const CategoryView(),
+    //NOTE: for future implementation
+    // const CategoryView(),
     const Text('Cashback Prize'),
     const SizedBox(),
     const ProfileView(),
@@ -23,7 +24,7 @@ class MainScreenViewModel extends ChangeNotifier {
   );
 
   void onTapNavButton(BuildContext context, int value) {
-    if (value == 3) {
+    if (value == 2) {
       Navigator.pushNamed(context, NavigationRouteNames.card).whenComplete(
         () {
           _currentScreen = 0;

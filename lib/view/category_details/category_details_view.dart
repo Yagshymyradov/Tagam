@@ -48,7 +48,7 @@ class _CategoryDetailsViewState extends State<CategoryDetailsView> {
             ),
           ),
         ],
-        body: const CategoryDetailsTabBar(),
+        body: const CategoryDetailsTabBar(restaurantId: 1),
       ),
     );
   }

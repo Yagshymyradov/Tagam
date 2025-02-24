@@ -1,10 +1,24 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
+import '../../../configs/assets.dart';
 import '../../../configs/components/product_card.dart';
 import '../../../configs/theme.dart';
+import '../../../data/api_response.dart';
+import '../../../main.dart';
+import '../../../model/model.dart';
+import '../../../view_model/view_model.dart';
+import '../../restaurant_details/widgets/widgets.dart';
 
 class CategoryDetailsTabBar extends StatefulWidget {
-  const CategoryDetailsTabBar({super.key});
+  final int? restaurantId;
+
+  const CategoryDetailsTabBar({
+    super.key,
+    required this.restaurantId,
+  });
 
   @override
   State<CategoryDetailsTabBar> createState() => _CategoryDetailsTabBarState();
@@ -13,11 +27,20 @@ class CategoryDetailsTabBar extends StatefulWidget {
 class _CategoryDetailsTabBarState extends State<CategoryDetailsTabBar>
     with TickerProviderStateMixin {
   late final TabController _tabController;
+  List<RestaurantMenusModel>? menus;
+  int lastIndex = 1;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 15, vsync: this);
+    final data = context.read<RestaurantDetailsViewModel>().menusResponseState.data;
+    menus = List.from(data ?? []);
+    menus?.insert(0, RestaurantMenusModel(icon: Assets.filter));
+    _tabController = TabController(
+      length: menus?.length ?? 0,
+      vsync: this,
+      initialIndex: 1,
+    );
   }
 
   @override
@@ -30,6 +53,7 @@ class _CategoryDetailsTabBarState extends State<CategoryDetailsTabBar>
   Widget build(BuildContext context) {
     final textThemeEx = context.textThemeEx;
     final colorScheme = Theme.of(context).colorScheme;
+    final data = context.watch<RestaurantDetailsViewModel>().menusResponseState.data;
 
     return Column(
       children: [
@@ -38,52 +62,102 @@ class _CategoryDetailsTabBarState extends State<CategoryDetailsTabBar>
           controller: _tabController,
           padding: const EdgeInsets.all(16),
           indicator: const BoxDecoration(),
-          onTap: (value) => setState(() {}),
+          onTap: (value) {
+            if (value != 0) {
+              lastIndex = value;
+              setState(() {});
+            }
+            if (value == 0) {
+              _tabController.index = lastIndex;
+              showModalBottomSheet<void>(
+                context: context,
+                isScrollControlled: true,
+                useSafeArea: true,
+                backgroundColor: Colors.transparent,
+                builder: (context) => FilterProducts(menus: data),
+              );
+            }
+          },
           isScrollable: true,
           tabAlignment: TabAlignment.start,
           labelPadding: const EdgeInsets.only(right: 8),
-          tabs: List<Widget>.generate(
-            15,
-            (i) => DecoratedBox(
-              decoration: BoxDecoration(
-                color: AppColors.white.withValues(
-                  alpha: _tabController.index == i ? 1 : 0.1,
-                ),
-                borderRadius: BorderRadius.circular(100),
-                border: Border.all(
-                  color: AppColors.white.withValues(alpha: 0.02),
-                ),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(12),
-                child: Text('Pizza'),
-              ),
-            ),
-          ).toList(),
+          tabs: menus?.mapIndexed(
+                (i, e) {
+                  return DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: AppColors.white.withValues(
+                        alpha: _tabController.index == i ? 1 : 0.1,
+                      ),
+                      borderRadius: BorderRadius.circular(100),
+                      border: Border.all(
+                        color: AppColors.white.withValues(alpha: 0.02),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: e.icon != null
+                          ? SvgPicture.asset(e.icon ?? '', height: 24)
+                          : Text(e.name ?? ''),
+                    ),
+                  );
+                },
+              ).toList(growable: false) ??
+              [],
         ),
         Expanded(
           child: TabBarView(
             physics: const NeverScrollableScrollPhysics(),
             controller: _tabController,
-            children: List.generate(
-              15,
-              (index) => GridView.builder(
-                itemCount: 9,
-                padding: const EdgeInsets.only(left: 8, right: 8, bottom: 20),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 14,
-                  mainAxisExtent: 290,
-                ),
-                itemBuilder: (context, index) => ProductCard(
-                  backgroundColor: colorScheme.primaryContainer,
-                ),
-              ),
-            ),
+            children: menus?.map(
+                  (e) {
+                    return ChangeNotifierProvider(
+                      create: (context) => ProductsViewModel(
+                        productsRepository: getIt(),
+                      )..getProducts(
+                          widget.restaurantId ?? 0,
+                          menus?[_tabController.index].id ?? 0,
+                        ),
+                      child: Consumer<ProductsViewModel>(
+                        builder: (context, value, child) {
+                          switch (value.productResponseState.status) {
+                            case Status.loaded:
+                              return const RestaurantProducts();
+                            case Status.error:
+                              return Text(value.productResponseState.message.toString());
+                            case Status.loading:
+                              return const Center(child: CircularProgressIndicator());
+                            default:
+                              return const SizedBox();
+                          }
+                        },
+                      ),
+                    );
+                  },
+                ).toList(growable: false) ??
+                [],
           ),
         ),
       ],
+    );
+  }
+}
+
+class RestaurantProducts extends StatelessWidget {
+  const RestaurantProducts({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final data = context.read<ProductsViewModel>().productResponseState.data;
+    return GridView.builder(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+      itemBuilder: (context, index) => const ProductCard(),
+      itemCount: data?.length ?? 0,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        mainAxisExtent: 300,
+        crossAxisCount: 2,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 14,
+      ),
     );
   }
 }

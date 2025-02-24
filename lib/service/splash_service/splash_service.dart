@@ -12,9 +12,17 @@ final class SplashService {
         final prefsService = getIt<OnboardingViewModel>().prefsService;
         final onboardingShowed = prefsService.getBool(PreferencesKeys.onboardingShowed);
         if (onboardingShowed ?? false) {
-          return Navigator.pushReplacementNamed(context, NavigationRouteNames.mainScreen);
+          return Navigator.pushNamedAndRemoveUntil(
+            context,
+            NavigationRouteNames.mainScreen,
+            (route) => false,
+          );
         } else {
-          return Navigator.pushReplacementNamed(context, NavigationRouteNames.onboarding);
+          return Navigator.pushNamedAndRemoveUntil(
+            context,
+            NavigationRouteNames.onboarding,
+            (route) => false,
+          );
         }
       },
     );

@@ -20,11 +20,15 @@ final class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: AppColors.white.withValues(alpha: 0.06)),
+        borderSide: BorderSide(
+          color: AppColors.white.withValues(alpha: 0.06),
+        ),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: AppColors.white.withValues(alpha: 0.06)),
+        borderSide: BorderSide(
+          color: AppColors.white.withValues(alpha: 0.06),
+        ),
       ),
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 14,

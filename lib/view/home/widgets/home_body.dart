@@ -14,23 +14,34 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return RefreshIndicator(
       backgroundColor: AppColors.white,
       onRefresh: () async => value.refresh(needLoad: false),
       child: CustomScrollView(
         slivers: [
           const SliverToBoxAdapter(child: BannerCard()),
-          const SliverToBoxAdapter(child: SectionTitle(title: 'All categories')),
-          const SliverToBoxAdapter(child: CategoriesCard()),
+          //NOTE: for future implementation
+          // const SliverToBoxAdapter(child: SectionTitle(title: 'All categories')),
+          // const SliverToBoxAdapter(child: CategoriesCard()),
+          // const SliverToBoxAdapter(child: SizedBox(height: 10)),
+          // const SliverToBoxAdapter(child: SectionTitle(title: 'Top restaurants')),
+          // TopRestaurants(model: value.topRestaurantsResponse.data),
+          // const SliverToBoxAdapter(child: SizedBox(height: 10)),
+          // const SliverToBoxAdapter(child: SectionTitle(title: 'New foods')),
+          // const SliverToBoxAdapter(child: SizedBox(height: 10)),
+          // const SliverToBoxAdapter(child: NewFoodsCard()),
           const SliverToBoxAdapter(child: SizedBox(height: 10)),
-          const SliverToBoxAdapter(child: SectionTitle(title: 'Top restaurants')),
-          TopRestaurants(model: value.topRestaurantsResponse.data),
-          const SliverToBoxAdapter(child: SizedBox(height: 10)),
-          const SliverToBoxAdapter(child: SectionTitle(title: 'New foods')),
-          const SliverToBoxAdapter(child: SizedBox(height: 10)),
-          const SliverToBoxAdapter(child: NewFoodsCard()),
-          const SliverToBoxAdapter(child: SizedBox(height: 10)),
-          const SliverToBoxAdapter(child: SectionTitle(title: 'Restaurants')),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                'Restaurants',
+                style: textTheme.headlineSmall,
+              ),
+            ),
+          ),
           Restaurants(model: value.restaurantsResponse.data),
           const SliverToBoxAdapter(child: SizedBox(height: 110)),
         ],

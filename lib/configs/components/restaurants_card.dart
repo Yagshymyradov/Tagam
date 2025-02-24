@@ -223,7 +223,7 @@ class OpenCloseCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: ColoredBox(
           color: status.backgroundColor,
           child: Padding(

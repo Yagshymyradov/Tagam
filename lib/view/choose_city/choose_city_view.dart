@@ -36,15 +36,29 @@ class ChooseCityView extends StatelessWidget {
               left: 16,
               right: 16,
               bottom: 30,
-              child: ElevatedButton(
-                onPressed: () => Navigator.pushNamed(
-                  context,
-                  NavigationRouteNames.createAccount,
-                ),
-                child: Text(
-                  'Continue',
-                  style: textTheme.bodyMedium,
-                ),
+              child: Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () => Navigator.pushNamed(
+                      context,
+                      NavigationRouteNames.createAccount,
+                    ),
+                    child: Text(
+                      'Skip',
+                      style: textTheme.bodyMedium,
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => Navigator.pushNamed(
+                      context,
+                      NavigationRouteNames.createAccount,
+                    ),
+                    child: Text(
+                      'Continue',
+                      style: textTheme.bodyMedium,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
