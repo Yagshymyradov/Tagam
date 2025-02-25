@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../configs/assets.dart';
 import '../../../configs/extensions.dart';
+import '../../../configs/routes/routes.dart';
 import '../../../configs/theme/app_colors.dart';
 
 class UserInfoCard extends StatelessWidget {
@@ -32,13 +32,13 @@ class UserInfoCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [
-                        AppColors.lightBlueViolet,
-                        AppColors.mediumSlateBlue,
+                        AppColors.oceanBreeze,
+                        AppColors.midnightTeal,
                       ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(100),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(12),
@@ -62,7 +62,10 @@ class UserInfoCard extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushNamed(
+                    context,
+                    NavigationRouteNames.editProfile,
+                  ),
                   icon: SvgPicture.asset(Assets.pen),
                 ),
               ],

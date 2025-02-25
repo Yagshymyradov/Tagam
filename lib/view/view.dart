@@ -4,6 +4,7 @@ export 'category/category_view.dart';
 export 'category_details/category_details_view.dart';
 export 'choose_city/choose_city_view.dart';
 export 'create_account/create_account_view.dart';
+export 'edit_profile/edit_profile_view.dart';
 export 'home/home_view.dart';
 export 'main/main_view.dart';
 export 'my_addresses/my_addresses_view.dart';

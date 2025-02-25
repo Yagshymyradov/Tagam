@@ -10,6 +10,7 @@ abstract final class NavigationRouteNames {
   static const mainScreen = '/';
   static const home = '/home';
   static const profile = '/profile';
+
   //NOTE: for future implementation
   // static const category = '/category';
   static const search = '/search';
@@ -21,6 +22,7 @@ abstract final class NavigationRouteNames {
   static const myAddresses = '/my_addresses';
   static const addAddress = '/add_address';
   static const myFavorites = '/my_favorites';
+  static const editProfile = '/edit_profile';
 }
 
 abstract final class Navigation {
@@ -42,6 +44,7 @@ abstract final class Navigation {
     NavigationRouteNames.myAddresses: (_) => const MyAddressesView(),
     NavigationRouteNames.addAddress: (_) => const AddAddressView(),
     NavigationRouteNames.myFavorites: (_) => const MyFavoritesView(),
+    NavigationRouteNames.editProfile: (_) => const EditProfileView(),
   };
 
   static Route<Object> onGenerateRoute(RouteSettings settings) {
