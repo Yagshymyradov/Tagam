@@ -9,7 +9,7 @@ final class AppTextTheme {
     titleLarge: TextStyle(
       fontSize: 24,
       color: AppColors.white,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.w600,
     ),
     titleMedium: TextStyle(
       fontSize: 16,

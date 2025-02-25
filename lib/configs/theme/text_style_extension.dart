@@ -19,6 +19,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
   final TextStyle? priceSmall;
   final TextStyle? titleSmallX;
   final TextStyle? titleMediumX;
+  final TextStyle? titleMediumWO;
   final TextStyle? buttonText;
   final TextStyle? errorButtonText;
   final TextStyle? headlineMediumEx;
@@ -41,6 +42,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     required this.priceSmall,
     required this.titleSmallX,
     required this.titleMediumX,
+    required this.titleMediumWO,
     required this.buttonText,
     required this.errorButtonText,
     required this.headlineMediumEx,
@@ -65,6 +67,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
     TextStyle? priceSmall,
     TextStyle? titleSmallX,
     TextStyle? titleMediumX,
+    TextStyle? titleMediumWO,
     TextStyle? buttonText,
     TextStyle? errorButtonText,
     TextStyle? headlineMediumEx,
@@ -87,6 +90,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       priceSmall: priceSmall ?? this.priceSmall,
       titleSmallX: titleSmallX ?? this.titleSmallX,
       titleMediumX: titleMediumX ?? this.titleMediumX,
+      titleMediumWO: titleMediumWO ?? this.titleMediumWO,
       buttonText: buttonText ?? this.buttonText,
       errorButtonText: errorButtonText ?? this.errorButtonText,
       headlineMediumEx: headlineMediumEx ?? this.headlineMediumEx,
@@ -116,6 +120,7 @@ final class TextStylesEx extends ThemeExtension<TextStylesEx> {
       priceSmall: priceSmall,
       titleSmallX: titleSmallX,
       titleMediumX: titleMediumX,
+      titleMediumWO: titleMediumWO,
       buttonText: buttonText,
       errorButtonText: errorButtonText,
       headlineMediumEx: headlineMediumEx,
@@ -216,6 +221,11 @@ final textStyleDark = TextStylesEx(
   titleMediumX: const TextStyle(
     fontSize: 16,
     color: AppColors.romanSilver,
+    fontWeight: FontWeight.w400,
+  ),
+  titleMediumWO: TextStyle(
+    fontSize: 16,
+    color: AppColors.white.withValues(alpha: 0.5),
     fontWeight: FontWeight.w400,
   ),
   buttonText: const TextStyle(
