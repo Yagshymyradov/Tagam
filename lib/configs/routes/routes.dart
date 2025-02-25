@@ -23,6 +23,7 @@ abstract final class NavigationRouteNames {
   static const addAddress = '/add_address';
   static const myFavorites = '/my_favorites';
   static const editProfile = '/edit_profile';
+  static const contactUs = '/contact_us';
 }
 
 abstract final class Navigation {
@@ -45,6 +46,7 @@ abstract final class Navigation {
     NavigationRouteNames.addAddress: (_) => const AddAddressView(),
     NavigationRouteNames.myFavorites: (_) => const MyFavoritesView(),
     NavigationRouteNames.editProfile: (_) => const EditProfileView(),
+    NavigationRouteNames.contactUs: (_) => const ContactUsView(),
   };
 
   static Route<Object> onGenerateRoute(RouteSettings settings) {

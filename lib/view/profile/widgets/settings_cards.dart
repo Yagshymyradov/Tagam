@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../configs/assets.dart';
+import '../../../configs/routes/routes.dart';
 import '../../../configs/theme.dart';
 import 'choose_language.dart';
 
@@ -22,7 +22,14 @@ class SettingsCards extends StatelessWidget {
             builder: (context) => const AlertLanguageDialog(),
           ),
         ),
-        const SettingsTile(title: 'Habarlaşmak', icon: Assets.message),
+        SettingsTile(
+          onTap: () => Navigator.pushNamed(
+            context,
+            NavigationRouteNames.contactUs,
+          ),
+          title: 'Habarlaşmak',
+          icon: Assets.message,
+        ),
         const SettingsTile(title: 'Policy Provicy', icon: Assets.checkShield),
       ],
     );
