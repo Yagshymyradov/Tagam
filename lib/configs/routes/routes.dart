@@ -24,6 +24,7 @@ abstract final class NavigationRouteNames {
   static const myFavorites = '/my_favorites';
   static const editProfile = '/edit_profile';
   static const contactUs = '/contact_us';
+  static const notification = '/notification';
 }
 
 abstract final class Navigation {
@@ -47,6 +48,7 @@ abstract final class Navigation {
     NavigationRouteNames.myFavorites: (_) => const MyFavoritesView(),
     NavigationRouteNames.editProfile: (_) => const EditProfileView(),
     NavigationRouteNames.contactUs: (_) => const ContactUsView(),
+    NavigationRouteNames.notification: (_) => const NotificationView(),
   };
 
   static Route<Object> onGenerateRoute(RouteSettings settings) {

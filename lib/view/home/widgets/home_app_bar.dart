@@ -9,7 +9,10 @@ AppBar homedAppBar(BuildContext context) {
     title: SvgPicture.asset(Assets.ballyKoke, height: 29),
     actions: [
       IconButton(
-        onPressed: () {},
+        onPressed: () => Navigator.pushNamed(
+          context,
+          NavigationRouteNames.notification,
+        ),
         style: IconButton.styleFrom(
           backgroundColor: Colors.transparent,
         ),

@@ -61,6 +61,7 @@ final class Assets {
   static const String sale = '$_icons/sale.svg';
   static const String top = '$_icons/top.svg';
   static const String attention = '$_icons/attention.svg';
+  static const String tLogo = '$_icons/t-logo.svg';
 
   static const String foodGroup = '$_images/food-group.png';
   static const String desertGroup = '$_images/desert-group.png';
