@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../../configs/routes/routes.dart';
 import '../../main.dart';
 import '../../view_model/view_model.dart';
+import '../auth_service/auth_service.dart';
 import '../service.dart';
 
 final class SplashService {
@@ -10,8 +11,9 @@ final class SplashService {
     Future<void>.delayed(const Duration(seconds: 2)).then(
       (value) async {
         final prefsService = getIt<OnboardingViewModel>().prefsService;
+        final user = getIt<AuthService>().prefsService.getString(PreferencesKeys.user);
         final onboardingShowed = prefsService.getBool(PreferencesKeys.onboardingShowed);
-        if (onboardingShowed ?? false) {
+        if (user != null || onboardingShowed == true) {
           return Navigator.pushNamedAndRemoveUntil(
             context,
             NavigationRouteNames.mainScreen,

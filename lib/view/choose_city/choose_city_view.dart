@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../configs/extensions.dart';
 import '../../configs/routes/routes.dart';
+import '../../view_model/view_model.dart';
 import 'widgets/widgets.dart';
 
 class ChooseCityView extends StatelessWidget {
@@ -8,7 +10,11 @@ class ChooseCityView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final onBoardingViewModel = context.read<OnboardingViewModel>();
     final textTheme = Theme.of(context).textTheme;
+    final textThemeEx = context.textThemeEx;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -37,25 +43,31 @@ class ChooseCityView extends StatelessWidget {
               right: 16,
               bottom: 30,
               child: Row(
+                spacing: 8,
                 children: [
-                  ElevatedButton(
-                    onPressed: () => Navigator.pushNamed(
-                      context,
-                      NavigationRouteNames.createAccount,
-                    ),
-                    child: Text(
-                      'Skip',
-                      style: textTheme.bodyMedium,
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () => onBoardingViewModel.onSkipButtonTap(context),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: colorScheme.primaryContainer,
+                      ),
+                      child: Text(
+                        'Skip',
+                        style: textThemeEx.labelLargeX,
+                      ),
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () => Navigator.pushNamed(
-                      context,
-                      NavigationRouteNames.createAccount,
-                    ),
-                    child: Text(
-                      'Continue',
-                      style: textTheme.bodyMedium,
+                  Expanded(
+                    flex: 2,
+                    child: ElevatedButton(
+                      onPressed: () => Navigator.pushNamed(
+                        context,
+                        NavigationRouteNames.createAccount,
+                      ),
+                      child: Text(
+                        'Continue',
+                        style: textTheme.bodyMedium,
+                      ),
                     ),
                   ),
                 ],

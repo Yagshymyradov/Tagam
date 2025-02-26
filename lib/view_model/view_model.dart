@@ -1,3 +1,5 @@
+export 'package:provider/provider.dart';
+
 export 'create_account/create_account_view_model.dart';
 export 'home/home_view_model.dart';
 export 'main_screen/main_screen_view_model.dart';

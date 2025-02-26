@@ -14,9 +14,9 @@ class HomeViewModel with ChangeNotifier {
 
   ApiResponse<List<RestaurantsModel>> get restaurantsResponse => _restaurantsResponse;
 
-  ApiResponse<List<RestaurantsModel>> _topRestaurantsResponse = ApiResponse.loading();
+  // ApiResponse<List<RestaurantsModel>> _topRestaurantsResponse = ApiResponse.loading();
 
-  ApiResponse<List<RestaurantsModel>> get topRestaurantsResponse => _topRestaurantsResponse;
+  // ApiResponse<List<RestaurantsModel>> get topRestaurantsResponse => _topRestaurantsResponse;
 
   bool loading = false;
   bool loaded = false;
@@ -40,29 +40,29 @@ class HomeViewModel with ChangeNotifier {
     whenLoad(false);
   }
 
-  Future<void> getTopRestaurants({bool? needLoad}) async {
-    whenLoad(needLoad ?? true);
-    error = false;
-    try {
-      final response = await homeRepository.getTopRestaurants();
-      _topRestaurantsResponse = ApiResponse.loaded(response);
-      loaded = true;
-    } catch (e) {
-      error = true;
-    }
-    whenLoad(false);
-  }
+  // Future<void> getTopRestaurants({bool? needLoad}) async {
+  //   whenLoad(needLoad ?? true);
+  //   error = false;
+  //   try {
+  //     final response = await homeRepository.getTopRestaurants();
+  //     _topRestaurantsResponse = ApiResponse.loaded(response);
+  //     loaded = true;
+  //   } catch (e) {
+  //     error = true;
+  //   }
+  //   whenLoad(false);
+  // }
 
   Future<void> refresh({bool needLoad = true}) async {
     await getAllRestaurants(needLoad: needLoad);
-    await getTopRestaurants(needLoad: needLoad);
+    // await getTopRestaurants(needLoad: needLoad);
   }
 
-  void onRestaurantTap(BuildContext context, int restaurantId) {
-    Navigator.pushNamed(
-      context,
-      NavigationRouteNames.restaurantDetails,
-      arguments: restaurantId,
-    );
-  }
+  // void onRestaurantTap(BuildContext context, int restaurantId) {
+  //   Navigator.pushNamed(
+  //     context,
+  //     NavigationRouteNames.restaurantDetails,
+  //     arguments: restaurantId,
+  //   );
+  // }
 }

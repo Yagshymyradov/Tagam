@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../../configs/assets.dart';
 import '../../../configs/theme.dart';
+import '../../../main.dart';
+import '../../../service/auth_service/auth_service.dart';
 
 class UserInfo extends StatelessWidget {
   const UserInfo({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final user = getIt<AuthService>().getUser();
     final textThemeEx = context.textThemeEx;
     final textTheme = Theme.of(context).textTheme;
 
@@ -36,12 +39,12 @@ class UserInfo extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         Text(
-          'Maksat Myradow',
+          user?.user.name ?? 'Unknown',
           style: textTheme.titleLarge,
         ),
         const SizedBox(height: 8),
         Text(
-          '+993 65 85 58 73',
+          user?.user.phoneNumber ?? '',
           style: textThemeEx.titleMediumWO,
         ),
       ],

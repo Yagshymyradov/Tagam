@@ -35,9 +35,8 @@ class OnboardingViewModel with ChangeNotifier {
     );
   }
 
-  Future<void> onContinueButtonTap(BuildContext context) async {
+  void onContinueButtonTap(BuildContext context) {
     if (_currentIndex < 2) {
-      //ignore: unawaited_futures
       controller.animateToPage(
         _currentIndex + 1,
         duration: const Duration(milliseconds: 320),
@@ -45,12 +44,24 @@ class OnboardingViewModel with ChangeNotifier {
       );
     } else {
       try {
-        await prefsService.setBool(PreferencesKeys.onboardingShowed, true);
-        //ignore: unawaited_futures
-        Navigator.pushReplacementNamed(context, NavigationRouteNames.chooseCity);
+        Navigator.pushReplacementNamed(
+          context,
+          NavigationRouteNames.chooseCity,
+        );
       } catch (e) {
         //ignore
       }
     }
+  }
+
+  Future<void> onSkipButtonTap(BuildContext context) async {
+    await prefsService.setBool(PreferencesKeys.onboardingShowed, true);
+
+    // ignore: unawaited_futures
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      NavigationRouteNames.mainScreen,
+      (route) => false,
+    );
   }
 }

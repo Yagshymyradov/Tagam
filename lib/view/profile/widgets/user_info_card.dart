@@ -6,12 +6,15 @@ import '../../../configs/assets.dart';
 import '../../../configs/extensions.dart';
 import '../../../configs/routes/routes.dart';
 import '../../../configs/theme/app_colors.dart';
+import '../../../main.dart';
+import '../../../service/auth_service/auth_service.dart';
 
 class UserInfoCard extends StatelessWidget {
   const UserInfoCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final user = getIt<AuthService>().getUser();
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
     final textThemeEx = context.textThemeEx;
@@ -51,11 +54,11 @@ class UserInfoCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Maksat Myradow',
+                        user?.user.name ?? 'Unknown',
                         style: textTheme.headlineSmall,
                       ),
                       Text(
-                        '+993 65 85 58 73',
+                        user?.user.phoneNumber ?? '',
                         style: textThemeEx.labelMediumWO,
                       ),
                     ],

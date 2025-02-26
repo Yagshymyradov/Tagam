@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../main.dart';
 import '../../view_model/view_model.dart';
@@ -15,9 +14,7 @@ class HomeView extends StatelessWidget {
       body: ChangeNotifierProvider(
         create: (context) => HomeViewModel(
           homeRepository: getIt(),
-        )
-          ..getAllRestaurants()
-          ..getTopRestaurants(),
+        )..getAllRestaurants(),
         child: Consumer<HomeViewModel>(
           builder: (context, value, child) {
             if (value.loading) return const LoadingIndicator();
