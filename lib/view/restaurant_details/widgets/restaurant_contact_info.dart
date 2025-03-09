@@ -1,8 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 
 import '../../../configs/assets.dart';
 import '../../../configs/theme.dart';
@@ -107,17 +103,14 @@ class _ContactInfoItem extends StatelessWidget {
           ),
           trailing: ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaY: 17.6, sigmaX: 17.6),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: AppColors.white.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
-                  child: SvgPicture.asset(Assets.open),
-                ),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: AppColors.white.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
+                child: SvgPicture.asset(Assets.open),
               ),
             ),
           ),

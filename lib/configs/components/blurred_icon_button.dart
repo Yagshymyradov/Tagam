@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
@@ -18,15 +16,12 @@ class BlurredIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(50),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-        child: IconButton(
-          onPressed: onTap,
-          style: IconButton.styleFrom(
-            backgroundColor: AppColors.white.withOpacity(0.14),
-          ),
-          icon: icon,
+      child: IconButton(
+        onPressed: onTap,
+        style: IconButton.styleFrom(
+          backgroundColor: AppColors.black.withValues(alpha: 0.2),
         ),
+        icon: icon,
       ),
     );
   }

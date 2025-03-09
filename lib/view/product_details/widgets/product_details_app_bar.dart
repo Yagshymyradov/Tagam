@@ -1,8 +1,5 @@
-import 'dart:ui';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../configs/assets.dart';
@@ -131,19 +128,16 @@ class _ProductDetailsAppBarState extends State<ProductDetailsAppBar> {
                       borderRadius: BorderRadius.circular(12),
                       child: Padding(
                         padding: const EdgeInsets.all(4),
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-                          child: AnimatedSmoothIndicator(
-                            activeIndex: currentIndex,
-                            count: 4,
-                            onDotClicked: onPageChanged,
-                            effect: JumpingDotEffect(
-                              dotHeight: 8,
-                              dotWidth: 8,
-                              spacing: 6,
-                              activeDotColor: AppColors.white,
-                              dotColor: AppColors.white.withValues(alpha: 0.5),
-                            ),
+                        child: AnimatedSmoothIndicator(
+                          activeIndex: currentIndex,
+                          count: 4,
+                          onDotClicked: onPageChanged,
+                          effect: JumpingDotEffect(
+                            dotHeight: 8,
+                            dotWidth: 8,
+                            spacing: 6,
+                            activeDotColor: AppColors.white,
+                            dotColor: AppColors.white.withValues(alpha: 0.5),
                           ),
                         ),
                       ),

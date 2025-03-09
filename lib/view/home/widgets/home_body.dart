@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../configs/components/components.dart';
 import '../../../configs/theme.dart';
 import '../../../view_model/view_model.dart';
 import 'widgets.dart';
@@ -43,7 +42,7 @@ class HomeBody extends StatelessWidget {
             ),
           ),
           Restaurants(model: value.restaurantsResponse.data),
-          const SliverToBoxAdapter(child: SizedBox(height: 110)),
+          const SliverToBoxAdapter(child: SizedBox(height: 20)),
         ],
       ),
     );

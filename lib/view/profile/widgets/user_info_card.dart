@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import '../../../configs/assets.dart';
@@ -20,59 +18,56 @@ class UserInfoCard extends StatelessWidget {
     final textThemeEx = context.textThemeEx;
 
     return ClipRRect(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaY: 20, sigmaX: 20),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: colorScheme.primaryContainer,
-            borderRadius: BorderRadius.circular(14),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(14, 14, 16, 14),
-            child: Row(
-              children: [
-                DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [
-                        AppColors.oceanBreeze,
-                        AppColors.midnightTeal,
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: SvgPicture.asset(Assets.user),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        user?.user.name ?? 'Unknown',
-                        style: textTheme.headlineSmall,
-                      ),
-                      Text(
-                        user?.user.phoneNumber ?? '',
-                        style: textThemeEx.labelMediumWO,
-                      ),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: colorScheme.primaryContainer,
+          borderRadius: BorderRadius.circular(14),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(14, 14, 16, 14),
+          child: Row(
+            children: [
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [
+                      AppColors.oceanBreeze,
+                      AppColors.midnightTeal,
                     ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
+                  borderRadius: BorderRadius.circular(100),
                 ),
-                IconButton(
-                  onPressed: () => Navigator.pushNamed(
-                    context,
-                    NavigationRouteNames.editProfile,
-                  ),
-                  icon: SvgPicture.asset(Assets.pen),
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: SvgPicture.asset(Assets.user),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      user?.user.name ?? 'Unknown',
+                      style: textTheme.headlineSmall,
+                    ),
+                    Text(
+                      user?.user.phoneNumber ?? '',
+                      style: textThemeEx.labelMediumWO,
+                    ),
+                  ],
+                ),
+              ),
+              IconButton(
+                onPressed: () => Navigator.pushNamed(
+                  context,
+                  NavigationRouteNames.editProfile,
+                ),
+                icon: SvgPicture.asset(Assets.pen),
+              ),
+            ],
           ),
         ),
       ),

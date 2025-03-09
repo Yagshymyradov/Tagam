@@ -38,14 +38,14 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Positioned(
+                Positioned(
                   right: 12,
                   top: 12,
                   child: FavoriteButton(
+                    onTap: (){},
                     isFavorite: false,
                     height: 32,
-                    blur: 20,
-                    colorOpacity: 0.12,
+                    colorOpacity: 0.2,
                     iconHeight: 20,
                   ),
                 ),

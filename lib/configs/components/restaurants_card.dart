@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../model/restaurants/restaurants_model.dart';
 import '../assets.dart';
@@ -222,17 +219,14 @@ class OpenCloseCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-        child: ColoredBox(
-          color: status.backgroundColor,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            child: Text(
-              status.name,
-              style: textTheme.labelMedium?.copyWith(
-                color: status.color,
-              ),
+      child: ColoredBox(
+        color: status.backgroundColor,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          child: Text(
+            status.name,
+            style: textTheme.labelMedium?.copyWith(
+              color: status.color,
             ),
           ),
         ),

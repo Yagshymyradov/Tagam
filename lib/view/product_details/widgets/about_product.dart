@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../configs/assets.dart';
 import '../../../configs/theme.dart';
@@ -59,29 +56,26 @@ class _BlurCard extends StatelessWidget {
         height: 48,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(12),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: AppColors.white.withValues(alpha: 0.12),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: AppColors.white.withValues(alpha: 0.12),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 8,
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 8,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(icon),
-                    const SizedBox(width: 4),
-                    Text(
-                      title,
-                      style: textTheme.titleSmall,
-                    ),
-                  ],
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(icon),
+                  const SizedBox(width: 4),
+                  Text(
+                    title,
+                    style: textTheme.titleSmall,
+                  ),
+                ],
               ),
             ),
           ),
