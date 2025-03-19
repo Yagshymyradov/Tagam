@@ -75,3 +75,22 @@ Map<String, dynamic> _$RestaurantMenusModelToJson(
       'image': instance.image,
       'icon': instance.icon,
     };
+
+BannerModel _$BannerModelFromJson(Map<String, dynamic> json) => BannerModel(
+      id: (json['id'] as num).toInt(),
+      image: json['image'] as String,
+      link: json['link'] as String,
+      isActive: json['isActive'] as bool,
+      createdAt: json['createdAt'] as String,
+      updatedAt: json['updatedAt'] as String,
+    );
+
+Map<String, dynamic> _$BannerModelToJson(BannerModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'image': instance.image,
+      'link': instance.link,
+      'isActive': instance.isActive,
+      'createdAt': instance.createdAt,
+      'updatedAt': instance.updatedAt,
+    };

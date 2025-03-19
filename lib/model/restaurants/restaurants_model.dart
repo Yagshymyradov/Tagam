@@ -70,3 +70,25 @@ class RestaurantMenusModel {
   factory RestaurantMenusModel.fromJson(Map<String, dynamic> json) =>
       _$RestaurantMenusModelFromJson(json);
 }
+
+@JsonSerializable()
+class BannerModel {
+  final int id;
+  final String image;
+  final String link;
+  final bool isActive;
+  final String createdAt;
+  final String updatedAt;
+
+  BannerModel({
+    required this.id,
+    required this.image,
+    required this.link,
+    required this.isActive,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  factory BannerModel.fromJson(Map<String, dynamic> json) =>
+      _$BannerModelFromJson(json);
+}

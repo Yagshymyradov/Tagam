@@ -3,6 +3,7 @@ abstract final class AppUrl {
   static const allRestaurants = '$baseUrl/restaurants';
   static const topRestaurants = '$baseUrl/restaurants?=true';
   static const register = '$baseUrl/user/register';
+  static const banners = '$baseUrl/banner';
 
   static String restaurantDetails(int restaurantId) => '$baseUrl/restaurants/$restaurantId';
 

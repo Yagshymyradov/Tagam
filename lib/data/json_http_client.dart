@@ -16,6 +16,7 @@ class JsonHttpClient {
   JsonHttpClient() {
     final jsonDio = Dio(
       BaseOptions(
+        connectTimeout: const Duration(seconds: 5),
         listFormat: ListFormat.multiCompatible,
         responseType: ResponseType.plain,
         headers: <String, dynamic>{

@@ -58,7 +58,11 @@ class TagamApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => HomeViewModel(homeRepository: getIt()),
+          create: (_) => HomeViewModel(
+            homeRepository: getIt(),
+          )
+            ..getAllRestaurants()
+            ..getBanners(),
         ),
         ChangeNotifierProvider(
           create: (_) => OnboardingViewModel(prefsService: getIt()),

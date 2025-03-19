@@ -1,6 +1,6 @@
+import 'package:carousel_slider/carousel_options.dart';
 import 'package:flutter/material.dart';
 
-import '../../configs/routes/routes.dart';
 import '../../data/api_response.dart';
 import '../../model/model.dart';
 import '../../repository/repository.dart';
@@ -14,13 +14,19 @@ class HomeViewModel with ChangeNotifier {
 
   ApiResponse<List<RestaurantsModel>> get restaurantsResponse => _restaurantsResponse;
 
-  // ApiResponse<List<RestaurantsModel>> _topRestaurantsResponse = ApiResponse.loading();
+  ApiResponse<List<BannerModel>> _bannersResponse = ApiResponse.loading();
 
-  // ApiResponse<List<RestaurantsModel>> get topRestaurantsResponse => _topRestaurantsResponse;
+  ApiResponse<List<BannerModel>> get bannersResponse => _bannersResponse;
 
   bool loading = false;
   bool loaded = false;
   bool error = false;
+  int bannerCurrentIndex = 1;
+
+  void setBannerCurrentIndex(int index, CarouselPageChangedReason reason) {
+    bannerCurrentIndex = index + 1;
+    notifyListeners();
+  }
 
   void whenLoad(bool load) {
     loading = load;
@@ -40,29 +46,21 @@ class HomeViewModel with ChangeNotifier {
     whenLoad(false);
   }
 
-  // Future<void> getTopRestaurants({bool? needLoad}) async {
-  //   whenLoad(needLoad ?? true);
-  //   error = false;
-  //   try {
-  //     final response = await homeRepository.getTopRestaurants();
-  //     _topRestaurantsResponse = ApiResponse.loaded(response);
-  //     loaded = true;
-  //   } catch (e) {
-  //     error = true;
-  //   }
-  //   whenLoad(false);
-  // }
+  Future<void> getBanners({bool? needLoad}) async {
+    whenLoad(needLoad ?? true);
+    error = false;
+    try {
+      final response = await homeRepository.getBanners();
+      _bannersResponse = ApiResponse.loaded(response);
+      loaded = true;
+    } catch (e) {
+      error = true;
+    }
+    whenLoad(false);
+  }
 
   Future<void> refresh({bool needLoad = true}) async {
     await getAllRestaurants(needLoad: needLoad);
-    // await getTopRestaurants(needLoad: needLoad);
+    await getBanners(needLoad: needLoad);
   }
-
-  // void onRestaurantTap(BuildContext context, int restaurantId) {
-  //   Navigator.pushNamed(
-  //     context,
-  //     NavigationRouteNames.restaurantDetails,
-  //     arguments: restaurantId,
-  //   );
-  // }
 }

@@ -27,4 +27,14 @@ class HomeApiRepository implements HomeRepository {
           .toList(growable: false),
     );
   }
+
+  @override
+  Future<List<BannerModel>> getBanners() async {
+    return httpClient.get(
+      AppUrl.banners,
+      mapper: (data) => (data as List<dynamic>)
+          .map((e) => BannerModel.fromJson(e as Map<String, dynamic>))
+          .toList(growable: false),
+    );
+  }
 }
