@@ -17,7 +17,7 @@ class HomeBody extends StatelessWidget {
 
     return RefreshIndicator(
       backgroundColor: AppColors.white,
-      onRefresh: () async => value.refresh(needLoad: false),
+      onRefresh: () async => value.refresh(),
       child: CustomScrollView(
         slivers: [
           const SliverToBoxAdapter(child: BannerCard()),
@@ -41,7 +41,7 @@ class HomeBody extends StatelessWidget {
               ),
             ),
           ),
-          Restaurants(model: value.restaurantsResponse.data),
+          const Restaurants(),
           const SliverToBoxAdapter(child: SizedBox(height: 20)),
         ],
       ),

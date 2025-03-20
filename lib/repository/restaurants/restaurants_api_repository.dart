@@ -9,9 +9,9 @@ class HomeApiRepository implements HomeRepository {
   HomeApiRepository({required this.httpClient});
 
   @override
-  Future<List<RestaurantsModel>> getAllRestaurants() async {
+  Future<List<RestaurantsModel>> getAllRestaurants(int page, int limit) async {
     return httpClient.get(
-      AppUrl.allRestaurants,
+      AppUrl.allRestaurants(page, limit),
       mapper: (data) => (data as List<dynamic>)
           .map((e) => RestaurantsModel.fromJson(e as Map<String, dynamic>))
           .toList(growable: false),

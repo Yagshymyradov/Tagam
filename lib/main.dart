@@ -60,9 +60,7 @@ class TagamApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => HomeViewModel(
             homeRepository: getIt(),
-          )
-            ..getAllRestaurants()
-            ..getBanners(),
+          )..init(),
         ),
         ChangeNotifierProvider(
           create: (_) => OnboardingViewModel(prefsService: getIt()),
