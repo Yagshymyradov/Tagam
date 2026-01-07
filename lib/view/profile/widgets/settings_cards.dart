@@ -14,14 +14,23 @@ class SettingsCards extends StatelessWidget {
       spacing: 8,
       children: [
         SettingsTile(
-          title: 'Dil',
-          icon: Assets.language,
-          isLanguage: true,
-          onTap: () => showDialog<void>(
-            context: context,
-            builder: (context) => const AlertLanguageDialog(),
+          onTap: () => Navigator.pushNamed(
+            context,
+            NavigationRouteNames.myAddresses,
           ),
+          title: 'Salgylarym',
+          icon: Assets.mapLocation,
         ),
+        // NOTE: for future
+        // SettingsTile(
+        //   title: 'Dil',
+        //   icon: Assets.language,
+        //   isLanguage: true,
+        //   onTap: () => showDialog<void>(
+        //     context: context,
+        //     builder: (context) => const AlertLanguageDialog(),
+        //   ),
+        // ),
         SettingsTile(
           onTap: () => Navigator.pushNamed(
             context,

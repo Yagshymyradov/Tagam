@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 
 import '../../../configs/assets.dart';
 import '../../../configs/components/product_card.dart';
@@ -31,11 +30,12 @@ class _MenuTabBodyState extends State<MenuTabBody> with TickerProviderStateMixin
     super.initState();
     final data = context.read<RestaurantDetailsViewModel>().menusResponseState.data;
     menus = List.from(data ?? []);
-    menus?.insert(0, RestaurantMenusModel(icon: Assets.filter));
+    //NOTE: for future implementation
+    // menus?.insert(0, RestaurantMenusModel(icon: Assets.filter));
     _tabController = TabController(
       length: menus?.length ?? 0,
       vsync: this,
-      initialIndex: 1,
+      // initialIndex: 1,
     );
   }
 

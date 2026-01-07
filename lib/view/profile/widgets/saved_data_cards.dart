@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../configs/assets.dart';
 import '../../../configs/extensions.dart';
 import '../../../configs/routes/routes.dart';
@@ -17,6 +15,7 @@ class SavedDataCards extends StatelessWidget {
         SavedDataCard(
           title: 'Halanlarym',
           icon: Assets.heart,
+          count: '0',
           onTap: () => Navigator.pushNamed(
             context,
             NavigationRouteNames.myFavorites,
@@ -25,18 +24,12 @@ class SavedDataCards extends StatelessWidget {
         SavedDataCard(
           title: 'Sargytlarym',
           icon: Assets.cubeBox,
-          onTap: () => Navigator.pushNamed(
-            context,
-            NavigationRouteNames.myOrders,
-          ),
-        ),
-        SavedDataCard(
-          title: 'Salgylarym',
-          icon: Assets.mapLocation,
-          onTap: () => Navigator.pushNamed(
-            context,
-            NavigationRouteNames.myAddresses,
-          ),
+          count: '0',
+          onTap: () {},
+          // Navigator.pushNamed(
+          //   context,
+          //   NavigationRouteNames.myOrders,
+          // ),
         ),
       ],
     );
@@ -46,12 +39,14 @@ class SavedDataCards extends StatelessWidget {
 class SavedDataCard extends StatelessWidget {
   final String title;
   final String icon;
+  final String count;
   final VoidCallback onTap;
 
   const SavedDataCard({
     super.key,
     required this.title,
     required this.icon,
+    required this.count,
     required this.onTap,
   });
 
@@ -75,7 +70,16 @@ class SavedDataCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 21,
               children: [
-                SvgPicture.asset(icon, height: 24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SvgPicture.asset(icon, height: 24),
+                    Text(
+                      '$count sany',
+                      style: context.textThemeEx.bodySmallEx,
+                    ),
+                  ],
+                ),
                 Text(
                   title,
                   style: context.textThemeEx.bodySmallEx,

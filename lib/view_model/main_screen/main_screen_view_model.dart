@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../configs/routes/routes.dart';
 import '../../configs/theme.dart';
 import '../../view/view.dart';
 
@@ -14,7 +13,7 @@ class MainScreenViewModel extends ChangeNotifier {
     //NOTE: for future implementation
     // const CategoryView(),
     const Text('Cashback Prize'),
-    const SizedBox(),
+    const CardView(),
     const ProfileView(),
   ];
 
@@ -24,14 +23,6 @@ class MainScreenViewModel extends ChangeNotifier {
   );
 
   void onTapNavButton(BuildContext context, int value) {
-    if (value == 2) {
-      Navigator.pushNamed(context, NavigationRouteNames.card).whenComplete(
-        () {
-          _currentScreen = 0;
-          notifyListeners();
-        },
-      );
-    }
     _currentScreen = value;
     notifyListeners();
   }

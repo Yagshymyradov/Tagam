@@ -28,7 +28,8 @@ class ProfileView extends StatelessWidget {
           SizedBox(height: 14),
           SettingsCards(),
           SizedBox(height: 14),
-          ThemeChooseCard(),
+          // NOTE: for future
+          // ThemeChooseCard(),
         ],
       ),
     );

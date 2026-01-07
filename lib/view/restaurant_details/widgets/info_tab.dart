@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../configs/components/components.dart';
 import '../../../view_model/view_model.dart';
@@ -23,8 +22,9 @@ class InfoTab extends StatelessWidget {
           ),
         ),
         const SliverToBoxAdapter(child: SizedBox(height: 8)),
-        const SliverToBoxAdapter(child: RestaurantDifferencesCard()),
-        const SliverToBoxAdapter(child: SizedBox(height: 8)),
+        // NOTE: for future implementation
+        // const SliverToBoxAdapter(child: RestaurantDifferencesCard()),
+        // const SliverToBoxAdapter(child: SizedBox(height: 8)),
         const SliverToBoxAdapter(child: RestaurantContactInfo()),
       ],
     );

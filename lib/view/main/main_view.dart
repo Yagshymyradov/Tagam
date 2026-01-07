@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../configs/assets.dart';
-import '../../view_model/main_screen/main_screen_view_model.dart';
+import '../../view_model/view_model.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});

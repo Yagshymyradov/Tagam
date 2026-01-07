@@ -50,13 +50,14 @@ class UserInfoCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      user?.user.name ?? 'Unknown',
+                      user?.user.name == '' ? 'Unknown' : user?.user.name ?? '',
                       style: textTheme.headlineSmall,
                     ),
-                    Text(
-                      user?.user.phoneNumber ?? '',
-                      style: textThemeEx.labelMediumWO,
-                    ),
+                    if (user?.user.phoneNumber != '')
+                      Text(
+                        user?.user.phoneNumber ?? '',
+                        style: textThemeEx.labelMediumWO,
+                      ),
                   ],
                 ),
               ),
